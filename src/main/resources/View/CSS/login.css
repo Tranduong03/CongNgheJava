@@ -1,0 +1,23 @@
+
+.button {
+    -fx-background-radius: 20px;
+    -fx-padding: 5px;
+    -fx-background-color: linear-gradient(to right, #d8b8ff, #87ceeb);
+}
+
+#bkgr_0_1 {
+    -fx-background-color: linear-gradient(to right, #87ceeb, #d8b8ff);
+}
+
+#bkgr_ad{
+
+}
+.button:hover{
+
+    -fx-background-color: #0af4b6;
+    -fx-text-fill:black;
+}
+
+#btn_Switch{
+    -fx-background-color: linear-gradient(to right, #0bf3b0, #e6a856);
+}
