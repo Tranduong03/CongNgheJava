@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="loginADScene" prefHeight="650.0" prefWidth="800.0" stylesheets="@CSS/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginADController">
+<AnchorPane fx:id="loginADScene" prefHeight="650.0" prefWidth="800.0" stylesheets="@CSS/homeView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginADController">
    <children>
       <GridPane prefHeight="650.0" prefWidth="800.0">
         <columnConstraints>
@@ -27,7 +27,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane fx:id="bkgr_0_1" prefHeight="200.0" prefWidth="200.0" stylesheets="@CSS/login.css" GridPane.columnIndex="1">
+            <AnchorPane fx:id="bkgr_0_1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <ImageView fitHeight="225.0" fitWidth="300.0" layoutX="55.0" layoutY="60.0">
                      <image>
@@ -80,8 +80,8 @@
                         </LinearGradient>
                      </stroke>
                   </Circle>
-                  <TextField layoutX="79.0" layoutY="273.0" prefHeight="36.0" prefWidth="270.0" />
-                  <PasswordField layoutX="79.0" layoutY="333.0" prefHeight="36.0" prefWidth="270.0" />
+                  <TextField fx:id="btn_Account" layoutX="79.0" layoutY="273.0" prefHeight="36.0" prefWidth="270.0" />
+                  <PasswordField fx:id="btn_Password" layoutX="79.0" layoutY="333.0" prefHeight="36.0" prefWidth="270.0" />
                   <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="28.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ImageSource/icons8-user-80.png" />
@@ -92,7 +92,7 @@
                         <Image url="@../ImageSource/img.icons8.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="65.0" layoutY="396.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="270.0" text="Login With ADMIN">
+                  <Button fx:id="btn_ADLogin" layoutX="65.0" layoutY="396.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="270.0" text="Login With ADMIN">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

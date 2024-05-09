@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,5 +18,19 @@ public class SQLOperation {
             Completed = Boolean.FALSE;
         }
         return Completed;
+    }
+
+    public static ResultSet GetDatabase(String Query) {
+        Boolean Completed = false;
+        SQLConnection sqlConn = new SQLConnection();
+        try {
+            Connection con = sqlConn.getConnection();
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(Query);
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
