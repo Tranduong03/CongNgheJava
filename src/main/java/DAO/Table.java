@@ -1,4 +1,4 @@
-package DatabaseConnection;
+package DAO;
 
 public class Table {
     public static void main(String[] args) {

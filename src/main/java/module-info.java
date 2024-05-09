@@ -19,5 +19,5 @@ module com.example.project {
 
     opens Controller to javafx.fxml;
 
-    exports DatabaseConnection;
+    exports DAO;
 }

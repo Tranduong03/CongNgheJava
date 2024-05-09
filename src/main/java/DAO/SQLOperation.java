@@ -1,6 +1,4 @@
-package DatabaseConnection;
-
-import javafx.scene.control.Alert;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
