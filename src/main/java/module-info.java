@@ -15,9 +15,10 @@ module com.example.project {
     requires com.microsoft.sqlserver.jdbc;
 
     opens View to javafx.fxml;
-    exports Controller;
 
+    exports Controller;
     opens Controller to javafx.fxml;
 
     exports DAO;
+
 }

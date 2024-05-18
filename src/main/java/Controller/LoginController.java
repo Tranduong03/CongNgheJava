@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
         String acc = txt_Account.getText();
         String pass = txt_Password.getText();
         Employee employee = checkLogin(acc, pass);
-        changeScece(event,employee);
+        changeScene(event,employee);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
     }
 
 
-    public void changeScece(ActionEvent event, Employee emp){
+    public void changeScene(ActionEvent event, Employee emp){
         Parent root = null;
         if(emp!=null){
             try {

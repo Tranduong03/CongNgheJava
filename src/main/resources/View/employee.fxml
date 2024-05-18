@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="emp_ShowBox" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeController">
+   <children>
+      <Line endX="765.0" layoutX="117.0" layoutY="50.0" startX="-100.0" />
+      <Label layoutX="74.0" prefHeight="49.0" prefWidth="198.0" text="Employee">
+         <font>
+            <Font name="Yu Gothic Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageSource/icons8-employee-100.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txt_Search" layoutX="24.0" layoutY="64.0" prefHeight="38.0" prefWidth="302.0" promptText="Find Here">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="btn_Search" fitHeight="38.0" fitWidth="31.0" layoutX="289.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageSource/Employee-image/icons8-find-64.png" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="choiceBox_Employee" layoutX="455.0" layoutY="62.0" prefHeight="38.0" prefWidth="122.0" />
+      <Label layoutX="352.0" layoutY="62.0" prefHeight="38.0" prefWidth="103.0" text="Sort By:">
+         <font>
+            <Font name="Yu Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btn_AddEmployee" fitHeight="50.0" fitWidth="50.0" layoutX="833.0">
+         <image>
+            <Image url="@../ImageSource/Employee-image/icons8-add-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_next" layoutX="516.0" layoutY="692.0">
+         <image>
+            <Image url="@../ImageSource/Employee-image/right-arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_prev" layoutX="320.0" layoutY="692.0">
+         <image>
+            <Image url="@../ImageSource/Employee-image/left-arrow.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl_CurPage" alignment="CENTER" layoutX="404.0" layoutY="692.0" prefHeight="64.0" prefWidth="91.0" text="1">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_PrevPage" layoutX="320.0" layoutY="692.0" mnemonicParsing="false" onAction="#onBtnPrevPage" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btn_NextPage" layoutX="516.0" layoutY="692.0" mnemonicParsing="false" onAction="#onBtnNextPage" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: transparent;" />
+      <AnchorPane fx:id="emp_ShowBox1" layoutX="42.0" layoutY="160.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name1" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate1" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary1" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="emp_ShowBox2" layoutX="252.0" layoutY="160.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name2" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate2" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary2" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="emp_ShowBox3" layoutX="463.0" layoutY="160.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name3" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate3" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary3" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="emp_ShowBox4" layoutX="673.0" layoutY="160.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name4" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate4" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary4" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="emp_ShowBox5" layoutX="42.0" layoutY="411.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name5" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate5" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary5" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="emp_ShowBox6" layoutX="252.0" layoutY="411.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name6" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate6" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary6" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="emp_ShowBox7" layoutX="463.0" layoutY="411.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name7" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate7" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary7" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="emp_ShowBox8" layoutX="673.0" layoutY="411.0" prefHeight="240.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 15;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageSource/Employee-image/emp-icon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emp_name8" alignment="CENTER" layoutX="13.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="emp_hireDate8" alignment="CENTER" layoutX="13.0" layoutY="165.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+            <Label fx:id="emp_salary8" alignment="CENTER" layoutX="12.0" layoutY="200.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: black; -fx-border-width: 0.3; -fx-border-radius: 5;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
