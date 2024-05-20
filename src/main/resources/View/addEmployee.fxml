@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddEmployeeController">
+<AnchorPane fx:id="addEmp_Box" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddEmployeeController">
    <children>
       <Line endX="765.0" layoutX="117.0" layoutY="50.0" startX="-100.0" />
       <ImageView fitHeight="45.0" fitWidth="44.0" layoutX="24.0" layoutY="3.0">
@@ -26,7 +26,7 @@
       </Label>
       <AnchorPane fx:id="newEmpInfo" layoutX="33.0" layoutY="73.0" prefHeight="687.0" prefWidth="834.0" stylesheets="@CSS/homeView.css">
          <children>
-            <Button fx:id="btnSaveNewEmp" layoutX="282.0" layoutY="584.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="270.0" text="Save" textFill="WHITE">
+            <Button fx:id="btnSaveNewEmp" layoutX="282.0" layoutY="584.0" mnemonicParsing="false" onAction="#onSaveClicked" prefHeight="70.0" prefWidth="270.0" text="Save" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic UI Bold" size="30.0" />
                </font>
@@ -57,7 +57,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="380.0" layoutY="157.0" prefHeight="38.0" prefWidth="154.0" />
+            <ChoiceBox fx:id="choice_Gender" layoutX="380.0" layoutY="157.0" prefHeight="38.0" prefWidth="154.0" />
             <Label layoutX="555.0" layoutY="118.0" prefHeight="38.0" prefWidth="146.0" text="Birthday">
                <font>
                   <Font name="Yu Gothic Bold" size="18.0" />
@@ -68,7 +68,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <DatePicker layoutX="544.0" layoutY="157.0" prefHeight="38.0" prefWidth="233.0" />
+            <DatePicker fx:id="daypick_Birth" layoutX="544.0" layoutY="157.0" prefHeight="38.0" prefWidth="233.0" />
             <Label layoutX="24.0" layoutY="286.0" prefHeight="221.0" prefWidth="416.0" style="-fx-background-color: #dfdfdf; -fx-background-radius: 20px;" />
             <Label layoutX="37.0" layoutY="234.0" prefHeight="37.0" prefWidth="200.0" text="Contact">
                <font>
@@ -106,8 +106,8 @@
                </font>
             </Label>
             <Label layoutX="457.0" layoutY="370.0" prefHeight="137.0" prefWidth="368.0" style="-fx-background-color: #dfdfdf; -fx-background-radius: 20px;" />
-            <TextField layoutX="474.0" layoutY="383.0" prefHeight="38.0" prefWidth="334.0" promptText="Enter the new username" style="-fx-padding: 0 0 0 50;" />
-            <TextField layoutX="474.0" layoutY="435.0" prefHeight="38.0" prefWidth="334.0" promptText="Enter the password" style="-fx-padding: 0 0 0 50;" />
+            <TextField fx:id="txt_Account" layoutX="474.0" layoutY="383.0" prefHeight="38.0" prefWidth="334.0" promptText="Enter the new username" style="-fx-padding: 0 0 0 50;" />
+            <TextField fx:id="txt_Password" accessibleRole="PASSWORD_FIELD" layoutX="474.0" layoutY="435.0" prefHeight="38.0" prefWidth="334.0" promptText="Enter the password" style="-fx-padding: 0 0 0 50;" />
             <ImageView fitHeight="38.0" fitWidth="37.0" layoutX="477.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ImageSource/icons8-employee-100.png" />
@@ -123,29 +123,31 @@
                   <Image url="@../ImageSource/SaveBtn-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField layoutX="39.0" layoutY="157.0" prefHeight="38.0" prefWidth="322.0">
+            <TextField fx:id="txt_Name" layoutX="39.0" layoutY="157.0" prefHeight="38.0" prefWidth="322.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </TextField>
-            <TextField layoutX="39.0" layoutY="350.0" prefHeight="38.0" prefWidth="322.0">
+            <TextField fx:id="txt_Email" layoutX="39.0" layoutY="350.0" prefHeight="38.0" prefWidth="322.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </TextField>
-            <TextField layoutX="39.0" layoutY="434.0" prefHeight="38.0" prefWidth="322.0">
+            <TextField fx:id="txt_Phone" layoutX="39.0" layoutY="434.0" prefHeight="38.0" prefWidth="322.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </TextField>
-            <TextField layoutX="472.0" layoutY="286.0" prefHeight="38.0" prefWidth="334.0">
+            <TextField fx:id="txt_Salary" layoutX="472.0" layoutY="286.0" prefHeight="38.0" prefWidth="334.0">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
             </TextField>
+            <Label fx:id="lbl_Error" layoutX="282.0" layoutY="515.0" prefHeight="27.0" prefWidth="270.0" textFill="RED" />
+            <Label fx:id="lbl_Complete" layoutX="282.0" layoutY="546.0" prefHeight="27.0" prefWidth="270.0" textFill="#00ff11" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="818.0" layoutY="2.0">
+      <ImageView fx:id="btn_back" fitHeight="58.0" fitWidth="55.0" layoutX="831.0" layoutY="-3.0">
          <image>
             <Image url="@../ImageSource/Employee-image/icons8-return-100.png" />
          </image>

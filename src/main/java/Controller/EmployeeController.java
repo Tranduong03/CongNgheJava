@@ -143,7 +143,7 @@ public class EmployeeController implements Initializable {
         }
     }
 
-    protected void empCurShow() throws SQLException {
+    protected void empCurShow() throws SQLException {//
         ResultSet rs = null;
         try {
             rs = new EmployeeDAO().getAllEmpInPage(curPage);
