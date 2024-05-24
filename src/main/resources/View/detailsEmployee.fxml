@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="DetailEmpScene" prefHeight="700.0" prefWidth="700.0" stylesheets="@CSS/homeView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailsEmployeeController">
+   <children>
+      <Button fx:id="btn_DeleteEmp" layoutX="85.0" layoutY="616.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" text="Delete">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_SaveEmpInfo" layoutX="374.0" layoutY="616.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="230.0" text="Save">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Line endX="383.5999755859375" endY="-13.400001525878906" layoutX="299.0" layoutY="68.0" startX="-282.0" startY="-13.400001525878906" />
+      <Label layoutX="85.0" layoutY="5.0" prefHeight="50.0" prefWidth="272.0" text="Detail">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="57.0" layoutX="26.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageSource/Employee-image/emp-set.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="26.0" layoutY="115.0" prefHeight="252.0" prefWidth="308.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+      <Label layoutX="42.0" layoutY="131.0" prefHeight="30.0" prefWidth="108.0" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="204.0" prefHeight="3.0" prefWidth="69.0" text="Gender">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="278.0" prefHeight="30.0" prefWidth="83.0" text="Birthdate">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="68.0" prefHeight="35.0" prefWidth="141.0" text="Information">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="357.0" layoutY="114.0" prefHeight="180.0" prefWidth="308.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+      <Label layoutX="374.0" layoutY="121.0" text="Phone">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="374.0" layoutY="196.0" prefHeight="30.0" prefWidth="60.0" text="Email">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_Phone" layoutX="368.0" layoutY="152.0" prefHeight="40.0" prefWidth="252.0" style="-fx-border-color: grey; -fx-border-radius: 7;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt_Email" layoutX="368.0" layoutY="230.0" prefHeight="40.0" prefWidth="252.0" style="-fx-border-color: grey; -fx-border-radius: 7;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="369.0" layoutY="68.0" prefHeight="35.0" prefWidth="100.0" text="Contact">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="378.0" prefHeight="35.0" prefWidth="193.0" text="Job Description">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="420.0" prefHeight="180.0" prefWidth="308.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+      <TextField fx:id="txt_Salary" layoutX="39.0" layoutY="462.0" prefHeight="40.0" prefWidth="262.0" style="-fx-border-color: grey; -fx-border-radius: 7;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="39.0" layoutY="432.0" prefHeight="30.0" prefWidth="108.0" text="Basic Salary">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="502.0" prefHeight="30.0" prefWidth="173.0" text="Fisrt-Working Date">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_HireDate" layoutX="39.0" layoutY="532.0" prefHeight="44.0" prefWidth="262.0" style="-fx-border-color: #dddddd; -fx-border-radius: 7px;" />
+      <TextField fx:id="txt_Name" layoutX="39.0" layoutY="161.0" prefHeight="40.0" prefWidth="262.0" style="-fx-border-color: grey; -fx-border-radius: 7;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="391.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageSource/Employee-image/icons8-save-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="106.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageSource/Employee-image/icons8-delete-96.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lb_Account" layoutX="374.0" layoutY="5.0" prefHeight="50.0" prefWidth="308.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dp_Birthdate" layoutX="39.0" layoutY="308.0" prefHeight="42.0" prefWidth="262.0" style="-fx-border-radius: 7px;" />
+      <Label fx:id="lbl_Error" layoutX="186.0" layoutY="661.0" prefHeight="35.0" prefWidth="378.0" textFill="#fa0202" />
+      <ChoiceBox fx:id="cb_Gender" layoutX="39.0" layoutY="234.0" prefHeight="42.0" prefWidth="262.0" />
+      <Label fx:id="lbl_Complete" layoutX="377.0" layoutY="661.0" prefHeight="35.0" prefWidth="230.0" text="Saved Successfully!" textFill="#0afa02">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

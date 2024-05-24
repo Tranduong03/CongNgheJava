@@ -13,6 +13,7 @@ module com.example.project {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires com.microsoft.sqlserver.jdbc;
+    requires annotations;
 
     opens View to javafx.fxml;
 

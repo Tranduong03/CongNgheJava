@@ -59,7 +59,6 @@ public class EmployeeDAO {
         }
     }
 
-
     public ResultSet getAllEmpInPage(int page) throws SQLException, Exception {
         ResultSet result;
         int numEmployees = getNumEmployees();
@@ -79,7 +78,7 @@ public class EmployeeDAO {
         return result;
     }
 
-    public int getSearchedEmployee(String name) throws SQLException, Exception {
+    public int getSearchedListEmployee(String name) throws SQLException, Exception {
         ResultSet rs = null;
         try {
             String query = "SELECT COUNT(*) FROM Employee WHERE Name LIKE '%" + name + "%';";
@@ -107,8 +106,8 @@ public class EmployeeDAO {
 
     public ResultSet getSearchedEmpInPage(int page, String name) throws SQLException, Exception {
         ResultSet result;
-        int numEmployees = getSearchedEmployee(name);
-        if(page == getSearchedEmployee(name)/8+1){
+        int numEmployees = getSearchedListEmployee(name);
+        if(page == getSearchedListEmployee(name)/8+1){
             result = SQLOperation.GetDatabase("SELECT EmployeeID, Name, HireDate, Salary\n" +
                     "FROM Employee\n" +
                     "WHERE Name LIKE '%"+ name + "%' " +
@@ -125,4 +124,56 @@ public class EmployeeDAO {
 
         return result;
     }
+
+    public ResultSet getEmployee(String employeeID) throws SQLException, Exception {
+        ResultSet rs = null;
+        rs = SQLOperation.GetDatabase("SELECT EmployeeID, Name, Gender, BirthDate, Phone, Email, Salary, HireDate, Account " +
+                    "FROM Employee " +
+                    "WHERE EmployeeID = "+ employeeID +";");
+        return rs;
+    }
+
+    public void deleteEmployee(int employeeID) throws SQLException, Exception {
+        SQLOperation.SetDatabase("DELETE FROM Employee WHERE EmployeeID='"+ employeeID +"';", "Delete Success");
+    }
+
+    public ResultSet name_getSortEmpInPage(int page) throws SQLException, Exception {
+        ResultSet result;
+        int numEmployees = getNumEmployees();
+        if(page == getNumEmployees() / 8 + 1) {
+            result = SQLOperation.GetDatabase(
+                    "SELECT EmployeeID, Name, HireDate, Salary " +
+                            "FROM Employee " +
+                            "ORDER BY Name ASC " +
+                            "OFFSET " + (page - 1) * 8 + " ROWS FETCH NEXT " + (numEmployees - (page - 1) * 8) + " ROWS ONLY;");
+        } else {
+            result = SQLOperation.GetDatabase(
+                    "SELECT EmployeeID, Name, HireDate, Salary " +
+                            "FROM Employee " +
+                            "ORDER BY Name ASC " +
+                            "OFFSET " + (page - 1) * 8 + " ROWS FETCH NEXT 8 ROWS ONLY;");
+        }
+        return result;
+    }
+
+    public ResultSet salary_getSortEmpInPage(int page) throws SQLException, Exception {
+        ResultSet result;
+        int numEmployees = getNumEmployees();
+        if(page == getNumEmployees() / 8 + 1) {
+            result = SQLOperation.GetDatabase(
+                    "SELECT EmployeeID, Name, HireDate, Salary " +
+                            "FROM Employee " +
+                            "ORDER BY Salary DESC " +
+                            "OFFSET " + (page - 1) * 8 + " ROWS FETCH NEXT " + (numEmployees - (page - 1) * 8) + " ROWS ONLY;");
+        } else {
+            result = SQLOperation.GetDatabase(
+                    "SELECT EmployeeID, Name, HireDate, Salary " +
+                            "FROM Employee " +
+                            "ORDER BY Salary DESC " +
+                            "OFFSET " + (page - 1) * 8 + " ROWS FETCH NEXT 8 ROWS ONLY;");
+        }
+        return result;
+    }
+
+
 }

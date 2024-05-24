@@ -72,3 +72,15 @@
     -fx-background-radius: 35px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 1,0,0,0);
 }
+
+#btn_SaveEmpInfo{
+    -fx-background-color: #37ff00;
+    -fx-background-radius: 35px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 1,0,0,0);
+}
+
+#btn_DeleteEmp{
+    -fx-background-color: #ff8080;
+    -fx-background-radius: 35px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 1,0,0,0);
+}
