@@ -13,6 +13,17 @@ public class Employee {
     private String phone;
     private String email;
     private double salary;
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
 
     public int getId() {
         return id;

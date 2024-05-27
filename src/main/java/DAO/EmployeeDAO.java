@@ -127,7 +127,7 @@ public class EmployeeDAO {
 
     public ResultSet getEmployee(String employeeID) throws SQLException, Exception {
         ResultSet rs = null;
-        rs = SQLOperation.GetDatabase("SELECT EmployeeID, Name, Gender, BirthDate, Phone, Email, Salary, HireDate, Account " +
+        rs = SQLOperation.GetDatabase("SELECT EmployeeID, Name, Gender, BirthDate, Phone, Email, Salary, HireDate, Account, Address " +
                     "FROM Employee " +
                     "WHERE EmployeeID = "+ employeeID +";");
         return rs;

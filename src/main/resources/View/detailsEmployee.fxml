@@ -55,7 +55,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="357.0" layoutY="114.0" prefHeight="180.0" prefWidth="308.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
+      <Label layoutX="357.0" layoutY="114.0" prefHeight="252.0" prefWidth="308.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 7px;" />
       <Label layoutX="374.0" layoutY="121.0" text="Phone">
          <font>
             <Font size="20.0" />
@@ -129,6 +129,16 @@
       <Label fx:id="lbl_Complete" layoutX="377.0" layoutY="661.0" prefHeight="35.0" prefWidth="230.0" text="Saved Successfully!" textFill="#0afa02">
          <font>
             <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_Address" layoutX="368.0" layoutY="308.0" prefHeight="40.0" prefWidth="252.0" style="-fx-border-color: grey; -fx-border-radius: 7;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="372.0" layoutY="278.0" prefHeight="30.0" prefWidth="83.0" text="Address">
+         <font>
+            <Font size="20.0" />
          </font>
       </Label>
    </children>

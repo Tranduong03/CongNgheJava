@@ -31,6 +31,7 @@ public class AddEmployeeController implements Initializable {
     @FXML private TextField txt_Account;
     @FXML private TextField txt_Password;
     @FXML private TextField txt_Salary;
+    @FXML private TextField txt_Address;
     @FXML private ImageView btn_back;
     @FXML private Button btnSaveNewEmp;
     @FXML private ChoiceBox choice_Gender;
@@ -61,6 +62,7 @@ public class AddEmployeeController implements Initializable {
         String account = txt_Account.getText();
         String password = txt_Password.getText();
         String salary = txt_Salary.getText();
+        String address = txt_Address.getText();
         String gender = choice_Gender.getSelectionModel().getSelectedItem().toString();
         String birth = daypick_Birth.getValue().toString();
 
@@ -228,14 +230,15 @@ public class AddEmployeeController implements Initializable {
         if (choiceGender.equals("Female")) {gender = 1;}
         String birth = daypick_Birth.getValue().toString();
         LocalDate birthDate = LocalDate.parse(birth, DateTimeFormatter.ISO_DATE);
+        String address = txt_Address.getText();
 
         Boolean check = validate();
 
         if(check) {
             Boolean Complete = new SQLOperation().SetDatabase(
-                    "INSERT INTO Employee(Name, Email, Phone, Account, Password, Salary, Gender, Birthdate, HireDate)" +
+                    "INSERT INTO Employee(Name, Email, Phone, Account, Password, Salary, Gender, Birthdate, HireDate, Address)" +
                             "VALUES ('"+ name +"', '"+ email +"', '"+ phone +"', '"+ account +"', '"+ password +"', " +
-                            "'"+ salary +"', '"+ gender +"', '"+ birthDate +"','"+ LocalDate.now() +"');",
+                            "'"+ salary +"', '"+ gender +"', '"+ birthDate +"','"+ LocalDate.now() +"', '"+ address +"');",
                     "Account add completed");
             if(Complete) {
                 lbl_Complete.setVisible(true);
@@ -259,6 +262,4 @@ public class AddEmployeeController implements Initializable {
         }
         addEmp_Box.getChildren().setAll(node);
     }
-
-
 }

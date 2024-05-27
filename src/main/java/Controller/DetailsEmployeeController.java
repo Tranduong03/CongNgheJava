@@ -37,6 +37,7 @@ public class DetailsEmployeeController implements Initializable {
     @FXML private Button btn_DeleteEmp;
     @FXML private Label lbl_Error;
     @FXML private Label lbl_Complete;
+    @FXML private TextField txt_Address;
 
     private ResultSet rs;
     private int id;
@@ -87,6 +88,7 @@ public class DetailsEmployeeController implements Initializable {
                 emp.setSalary(rs.getDouble(7));
                 emp.setHireDate(rs.getDate(8).toLocalDate());
                 emp.setAccount(rs.getString(9));
+                emp.setAddress(rs.getString(10));
 
                 txt_Name.setText(emp.getName());
                 cb_Gender.setValue(emp.getGender() ? "Female" : "Male");
@@ -96,6 +98,7 @@ public class DetailsEmployeeController implements Initializable {
                 lb_Account.setText("Account: "+emp.getAccount());
                 dp_Birthdate.setValue(emp.getBirthDate());
                 lb_HireDate.setText(""+ emp.getHireDate());
+                txt_Address.setText(emp.getAddress());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -253,10 +256,12 @@ public class DetailsEmployeeController implements Initializable {
             Double salary = Double.parseDouble(txt_Salary.getText());
             LocalDate birthdate = dp_Birthdate.getValue();
             int gender = cb_Gender.getSelectionModel().getSelectedItem().equals("Female") ? 1 : 0;
+            String address = txt_Address.getText();
 
             Boolean complete = new SQLOperation().SetDatabase(
                     "UPDATE Employee " +
-                            "SET Name = '" + name + "', Email ='" + email + "', Gender = '" + gender + "', Phone = '" + phone + "', Birthdate = '" + birthdate + "', Salary = '" + salary + "' " +
+                            "SET Name = '" + name + "', Email ='" + email + "', Gender = '" + gender + "', Phone = '" + phone + "'," +
+                            " Birthdate = '" + birthdate + "', Salary = '" + salary + "', Address = '"+ address +"' " +
                             "WHERE EmployeeID = '" + id + "'",
                     "Account fix completed");
 

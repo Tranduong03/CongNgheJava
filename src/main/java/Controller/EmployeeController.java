@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.net.URL;
@@ -110,7 +111,7 @@ public class EmployeeController implements Initializable {
     }
 
     // Lấy số trang hiện tại áp đặt lại vào Label
-    public void setCurPage() {
+    private void setCurPage() {
         lbl_CurPage.setText(String.valueOf(curPage));
 
         // Kiểm tra và cập nhật trạng thái của nút btn_NextPage và img_next
@@ -135,7 +136,7 @@ public class EmployeeController implements Initializable {
     }
 
     // Lấy số lượng trang
-    public int setNumOfPage(int numOfEmp){
+    private int setNumOfPage(int numOfEmp){
         if (numOfEmp % 8 == 0) {return numOfEmp/8;}
         else return numOfEmp / 8 +1;
     }
@@ -170,12 +171,19 @@ public class EmployeeController implements Initializable {
         setCurPage();
         clearCurShow();
         try {
-            if (searchFlag == false) {
+            if (searchFlag == false && sortFlag == false) {
                 empCurShow();
-            } else {
+            } else if(searchFlag) {
                 empSearchShow(txt_Search.getText());
+            } else if(sortFlag){
+                if(choiceBox_Employee.getSelectionModel().getSelectedItem().toString().equals("A-Z Name")){
+                    empCurShowSortedByName();
+                }
+                else if(choiceBox_Employee.getSelectionModel().getSelectedItem().toString().equals("Salary Desc")){
+                    empCurShowSortedBySalary();
+                }
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -196,6 +204,7 @@ public class EmployeeController implements Initializable {
     protected void clearCurShow(){
         for (int i = 0; i < 8; i++){
             AnchorPane anchorPane = (AnchorPane) emp_ShowBox.lookup("#emp_ShowBox" + (i + 1));
+
             Label name = (Label) anchorPane.lookup("#emp_name" + (i + 1));
             Label hireDate = (Label) anchorPane.lookup("#emp_hireDate" + (i + 1));
             Label salary = (Label) anchorPane.lookup("#emp_salary" + (i + 1));
@@ -248,34 +257,33 @@ public class EmployeeController implements Initializable {
         for (int i = 1; i <= 8; i++) {
             String anchorPaneId = "#emp_ShowBox" + i;
             AnchorPane anchorPane = (AnchorPane) emp_ShowBox.lookup(anchorPaneId);
-
             anchorPane.setOnMouseClicked(mouseEvent -> {
                 try {
                     // Lấy ResultSet từ EmployeeDAO
-                    ResultSet rs = new EmployeeDAO().getEmployee(anchorPane.getUserData().toString());
-                    // Tạo FXMLLoader và load scene mới
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/detailsEmployee.fxml"));
-                    Stage primaryStage = new Stage();
-                    Scene scene = new Scene(fxmlLoader.load(), 700, 700);
-
-                    // Lấy controller từ FXMLLoader và truyền ResultSet vào DetailsEmployeeController
-                    DetailsEmployeeController controller = fxmlLoader.getController();
-                    controller.setResultSet(rs);
-                    // Cài đặt các thuộc tính khác cho cửa sổ mới
-                    primaryStage.setScene(scene);
-                    primaryStage.setTitle("Employee Detail");
-                    Image icon = new Image(getClass().getResource("/ImageSource/farvicon.png").toExternalForm());
-                    primaryStage.getIcons().add(icon);
-                    primaryStage.centerOnScreen();
-
-                    // Hiển thị cửa sổ mới
-                    primaryStage.show();
-                } catch (Exception e) {
+                    if(!anchorPane.getUserData().equals("") && !anchorPane.getUserData().equals(null)) {
+                        ResultSet rs = new EmployeeDAO().getEmployee(anchorPane.getUserData().toString());
+                        // Tạo FXMLLoader và load scene mới
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/detailsEmployee.fxml"));
+                        Stage primaryStage = new Stage();
+                        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
+                        // Lấy controller từ FXMLLoader và truyền ResultSet vào DetailsEmployeeController
+                        DetailsEmployeeController controller = fxmlLoader.getController();
+                        controller.setResultSet(rs);
+                        // Cài đặt các thuộc tính khác cho cửa sổ mới
+                        primaryStage.setScene(scene);
+                        primaryStage.setTitle("Employee Detail");
+                        Image icon = new Image(getClass().getResource("/ImageSource/farvicon.png").toExternalForm());
+                        primaryStage.getIcons().add(icon);
+                        primaryStage.centerOnScreen();
+                        // Hiển thị cửa sổ mới
+                        primaryStage.show();
+                    }
+                }  catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-
                 System.out.println("Clicked on " + anchorPane.getUserData().toString());
             });
+
         }
     }
 
@@ -316,7 +324,6 @@ public class EmployeeController implements Initializable {
         for (int i = 1; i <= 8; i++) {
             String anchorPaneId = "#emp_ShowBox" + i;
             AnchorPane anchorPane = (AnchorPane) emp_ShowBox.lookup(anchorPaneId);
-            if(rs==null) continue;
 
             try {
                 if (rs.next()) {
