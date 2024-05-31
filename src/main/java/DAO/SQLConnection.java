@@ -15,8 +15,6 @@ public class SQLConnection {
         String password = "29112004";
         try {
             conn = DriverManager.getConnection(url, user, password);
-
-            System.out.println("Connected to database:"+ conn.getCatalog());
         } catch (SQLServerException e) {
             e.printStackTrace();
             return null;

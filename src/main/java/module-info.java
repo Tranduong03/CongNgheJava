@@ -17,6 +17,8 @@ module com.example.project {
 
     opens View to javafx.fxml;
 
+    opens Model;
+
     exports Controller;
     opens Controller to javafx.fxml;
 

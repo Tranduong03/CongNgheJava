@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="prod_Show" prefHeight="800.0" prefWidth="900.0" stylesheets="@CSS/homeView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProductController">
+   <children>
+      <ScrollPane fx:id="prod_Table" layoutX="9.0" layoutY="119.0" prefHeight="462.0" prefWidth="882.0">
+         <content>
+            <TableView fx:id="prod_TableShow" prefHeight="462.0" prefWidth="866.0">
+              <columns>
+                <TableColumn fx:id="prod_Ordinal" prefWidth="61.60000687837601" text="Ordinal" />
+                <TableColumn fx:id="prod_name" prefWidth="179.19997024536133" text="Name" />
+                  <TableColumn fx:id="prod_Category" prefWidth="72.80000305175781" text="Category" />
+                  <TableColumn fx:id="prod_Quantity" prefWidth="68.00003051757812" text="Quantity" />
+                  <TableColumn fx:id="prod_SellPrice" prefWidth="66.39996337890625" text="Sell Price" />
+                  <TableColumn fx:id="prod_Description" prefWidth="224.80010986328125" text="Description" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Line endX="429.4000244140625" layoutX="440.0" layoutY="50.0" startX="-410.6000061035156" />
+      <Label layoutX="64.0" layoutY="14.0" prefHeight="36.0" prefWidth="136.0" text="Product">
+         <font>
+            <Font name="Yu Gothic Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageSource/icons8-open-box-50.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txt_Search" layoutX="34.0" layoutY="74.0" prefHeight="38.0" prefWidth="302.0" promptText="Find Here">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="btn_Search" fitHeight="38.0" fitWidth="31.0" layoutX="299.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImageSource/Employee-image/icons8-find-64.png" />
+         </image>
+      </ImageView>
+      <TabPane fx:id="prod_Tab" layoutX="11.0" layoutY="586.0" prefHeight="200.0" prefWidth="882.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab_AddProd" text="Add">
+            <content>
+              <AnchorPane fx:id="pane_AddProd" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="70.0" text="Name:" />
+                        <TextField fx:id="prod_AddName" layoutX="86.0" layoutY="16.0" prefHeight="26.0" prefWidth="190.0" />
+                        <Label layoutX="14.0" layoutY="56.0" prefHeight="31.0" prefWidth="70.0" text="Sell Price:" />
+                        <TextField fx:id="prod_AddSellPrice" layoutX="86.0" layoutY="58.0" prefHeight="26.0" prefWidth="190.0" />
+                        <Label layoutX="14.0" layoutY="99.0" prefHeight="31.0" prefWidth="70.0" text="Quantity:" />
+                        <TextField fx:id="prod_AddQuantity" layoutX="86.0" layoutY="101.0" prefHeight="26.0" prefWidth="96.0" />
+                        <Label layoutX="289.0" layoutY="98.0" prefHeight="31.0" prefWidth="70.0" text="Category:" />
+                        <ChoiceBox fx:id="prod_AddCategory" layoutX="359.0" layoutY="101.0" prefHeight="26.0" prefWidth="175.0" />
+                        <Label layoutX="283.0" layoutY="18.0" prefHeight="31.0" prefWidth="70.0" text="Description:" />
+                        <TextArea fx:id="prod_AddDescription" layoutX="360.0" layoutY="19.0" prefHeight="76.0" prefWidth="249.0" />
+                        <Button fx:id="btn_SaveNewProd" layoutX="660.0" layoutY="52.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="160.0" text="Save">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tab_DeleteProd" text="Delete">
+            <content>
+              <AnchorPane fx:id="pane_DeleteProd" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="prod_ChooseToDel" layoutX="162.0" prefHeight="170.0" prefWidth="278.0">
+                          <columns>
+                            <TableColumn fx:id="prod_Choose" prefWidth="276.0000305175781" text="Choose Product" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="prod_ChooseToRestore" layoutX="603.0" prefHeight="170.0" prefWidth="278.0">
+                           <columns>
+                              <TableColumn fx:id="prod_Restore" prefWidth="276.0000305175781" text="Restore" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="136.0" text="Delete">
+                           <font>
+                              <Font name="Yu Gothic Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="452.0" layoutY="14.0" prefHeight="31.0" prefWidth="136.0" text="Restore">
+                           <font>
+                              <Font name="Yu Gothic Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_DeleteProd" layoutX="14.0" layoutY="108.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Delete item(s)" />
+                        <Button fx:id="btn_Restore" layoutX="452.0" layoutY="109.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Restore item(s)" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tab_UpdateProd" text="Update">
+              <content>
+                <AnchorPane fx:id="pane_UpdateProd" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="18.0" prefHeight="31.0" prefWidth="70.0" text="Name:" />
+                        <TextField fx:id="prod_UpName" layoutX="101.0" layoutY="20.0" prefHeight="26.0" prefWidth="181.0" />
+                        <Label layoutX="14.0" layoutY="56.0" prefHeight="31.0" prefWidth="70.0" text="Sell Price:" />
+                        <TextField fx:id="prod_UpSellPrice" layoutX="101.0" layoutY="58.0" prefHeight="26.0" prefWidth="182.0" />
+                        <Label layoutX="293.0" layoutY="93.0" prefHeight="31.0" prefWidth="75.0" text="Category:" />
+                        <Label layoutX="290.0" layoutY="17.0" prefHeight="31.0" prefWidth="70.0" text="Description:" />
+                        <TextArea fx:id="prod_UpDescription" layoutX="360.0" layoutY="14.0" prefHeight="70.0" prefWidth="254.0" />
+                        <Button fx:id="btn_SaveProd" layoutX="653.0" layoutY="52.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="160.0" text="Save">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <ChoiceBox fx:id="prod_UpCategory" layoutX="360.0" layoutY="96.0" prefHeight="26.0" prefWidth="195.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

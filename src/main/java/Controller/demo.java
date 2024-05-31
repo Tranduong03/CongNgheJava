@@ -3,66 +3,46 @@ package Controller;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.geometry.Pos;
 
 public class demo extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Main Window");
+        // Tạo VBox chính
+        VBox mainLayout = new VBox();
 
-        // Tạo pane gốc với kích thước 500x500
-        Pane rootPane = new Pane();
-        rootPane.setPrefSize(500, 500);
+        // Tạo HBox cho thanh header-bar
+        HBox headerBar = new HBox();
+        headerBar.setStyle("-fx-padding: 10px; -fx-spacing: 10px;");
 
-        // Tạo nút "Do you love me?"
-        Button mainButton = new Button("Do you love me?");
-        mainButton.setLayoutX(200);
-        mainButton.setLayoutY(200);
-        mainButton.setOnAction(e -> showOverlay(rootPane));
+        // Tạo VBox cho phần nội dung
+        VBox contentBox = new VBox();
+        contentBox.setStyle("-fx-padding: 20px; -fx-background-color: #FFFFFF;");
 
-        rootPane.getChildren().add(mainButton);
+        // Tạo các nút trên thanh header-bar
+        Button redButton = new Button("Red");
+        Button greenButton = new Button("Green");
+        Button blueButton = new Button("Blue");
 
-        Scene scene = new Scene(rootPane);
+        // Thêm các nút vào headerBar
+        headerBar.getChildren().addAll(redButton, greenButton, blueButton);
+
+        // Thiết lập sự kiện khi nhấn vào các nút
+        redButton.setOnAction(event -> contentBox.setStyle("-fx-background-color: red;"));
+        greenButton.setOnAction(event -> contentBox.setStyle("-fx-background-color: green;"));
+        blueButton.setOnAction(event -> contentBox.setStyle("-fx-background-color: blue;"));
+
+        // Thêm headerBar và contentBox vào mainLayout
+        mainLayout.getChildren().addAll(headerBar, contentBox);
+
+        // Tạo Scene và thiết lập Stage
+        Scene scene = new Scene(mainLayout, 400, 300);
+        primaryStage.setTitle("JavaFX Header Bar Example");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    private void showOverlay(Pane rootPane) {
-        // Tạo pane đè lên với kích thước 300x300
-        Pane overlayPane = new Pane();
-        overlayPane.setPrefSize(300, 300);
-        overlayPane.setStyle("-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 10;");
-
-        // Đặt vị trí của pane đè lên
-        overlayPane.setLayoutX(100);
-        overlayPane.setLayoutY(100);
-
-        // Tạo hai nút "Yes" và "No"
-        Button yesButton = new Button("Yes");
-        Button noButton = new Button("No");
-
-        yesButton.setLayoutX(100);
-        yesButton.setLayoutY(100);
-        noButton.setLayoutX(100);
-        noButton.setLayoutY(150);
-
-        yesButton.setOnAction(e -> {
-            System.out.println("You clicked Yes!");
-            rootPane.getChildren().remove(overlayPane);
-        });
-
-        noButton.setOnAction(e -> {
-            System.out.println("You clicked No!");
-            rootPane.getChildren().remove(overlayPane);
-        });
-
-        overlayPane.getChildren().addAll(yesButton, noButton);
-        rootPane.getChildren().add(overlayPane);
     }
 
     public static void main(String[] args) {
