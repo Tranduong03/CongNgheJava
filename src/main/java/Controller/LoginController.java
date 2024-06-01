@@ -74,10 +74,11 @@ public class LoginController implements Initializable {
         Parent root = null;
         if(emp!=null){
             try {
-                FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/View/home.fxml"));
+                FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/View/homeEmployee.fxml"));
                 root = loader.load();
-                HomeController homeController = loader.getController();
-
+                HomeEmployeeController homeEmployeeController = loader.getController();
+                // truyền dữ liệu của emp cho class HomeEmployeeController
+                homeEmployeeController.setEmployee(emp);
             }catch (IOException e){
                 e.printStackTrace();
             }
@@ -85,7 +86,6 @@ public class LoginController implements Initializable {
             stage.setTitle("Home");
             stage.setMaximized(true);
             stage.setFullScreen(true);
-            //stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
             stage.setScene(new Scene(root,1200, 800));
             stage.setResizable(true);
             stage.centerOnScreen();

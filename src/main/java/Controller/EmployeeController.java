@@ -252,7 +252,10 @@ public class EmployeeController implements Initializable {
         setCurPage();
     }
 
-    // Sự kiện nhấn vào ô hiện thị người dùng
+    /*
+    * Xử lí sự kiện nhấn vào 1 ô nhân viên bất kì
+    * bằng cách hiển thị thông tin chi tiết của nhân viên đó
+    * */
     protected void onShowBoxClicked() throws SQLException {
         for (int i = 1; i <= 8; i++) {
             String anchorPaneId = "#emp_ShowBox" + i;

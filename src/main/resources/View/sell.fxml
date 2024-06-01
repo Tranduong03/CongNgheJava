@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="910.0" style="-fx-background-color: #B9E0F6;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.calculatorController">
+    <children>
+        <Label layoutX="14.0" layoutY="17.0" prefHeight="57.0" prefWidth="457.0" style="-fx-border-color: black; -fx-border-radius: 10PX;" />
+        <TextField fx:id="txt_search" layoutX="70.0" layoutY="22.0" prefHeight="46.0" prefWidth="386.0" promptText="Search Product ......." style="-fx-background-color: transparent;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <ScrollPane layoutX="14.0" layoutY="160.0" prefHeight="514.0" prefWidth="457.0" style="-fx-border-color: black;">
+            <content>
+                <VBox fx:id="vb_productList" prefHeight="529.0" prefWidth="455.0" style="-fx-background-color: #FFFFFF; -fx-border-color: black;" />
+            </content>
+        </ScrollPane>
+        <HBox layoutX="14.0" layoutY="122.0" prefHeight="38.0" prefWidth="457.0" style="-fx-background-color: #0099FF; -fx-border-color: black;">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="51.0" textFill="WHITE">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" prefHeight="38.0" prefWidth="273.0" text="Tên sản phẩm" textAlignment="CENTER" textFill="#fffdfd">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <padding>
+                        <Insets left="20.0" right="5.0" />
+                    </padding>
+                </Label>
+                <Label alignment="CENTER" prefHeight="38.0" prefWidth="188.0" text="Đơn giá" textAlignment="CENTER" textFill="#fffdfd">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <padding>
+                        <Insets left="17.0" right="15.0" />
+                    </padding>
+                </Label>
+                <Label alignment="CENTER" prefHeight="38.0" prefWidth="136.0" text="S.Lượng" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <padding>
+                        <Insets right="15.0" />
+                    </padding>
+                </Label>
+            </children>
+        </HBox>
+        <HBox layoutX="14.0" layoutY="674.0" prefHeight="66.0" prefWidth="457.0" style="-fx-background-color: white; -fx-border-color: black;">
+            <children>
+                <Label prefHeight="63.0" prefWidth="214.0" text="   Tổng Tiền">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets right="50.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets right="50.0" />
+                    </padding>
+                </Label>
+                <Label fx:id="lb_totalCost" prefHeight="63.0" prefWidth="313.0" style="-fx-background-color: white;">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <Button fx:id="btn_cash" layoutX="494.0" layoutY="17.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="171.0" style="-fx-background-color: white; -fx-border-color: black; -fx-cursor: hand; -fx-border-radius: 5px;" text="Tiền Mặt ">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+            <padding>
+                <Insets top="40.0" />
+            </padding>
+        </Button>
+        <Button fx:id="btn_bank" layoutX="724.0" layoutY="17.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="171.0" style="-fx-background-color: white; -fx-cursor: hand; -fx-border-color: black; -fx-border-radius: 5px;" text="Chuyển Khoản">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <padding>
+                <Insets top="40.0" />
+            </padding>
+        </Button>
+        <CheckBox fx:id="select_all" layoutX="22.0" layoutY="82.0" mnemonicParsing="false" text="Select All">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </CheckBox>
+        <ImageView fitHeight="46.0" fitWidth="68.0" layoutX="557.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../ImageSource/money.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="46.0" fitWidth="65.0" layoutX="787.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../ImageSource/transaction.png" />
+            </image>
+        </ImageView>
+        <AnchorPane fx:id="pane_Sell" layoutX="494.0" layoutY="122.0" prefHeight="553.0" prefWidth="419.0">
+            <children>
+                <AnchorPane prefHeight="553.0" prefWidth="402.0" style="-fx-background-color: white; -fx-border-color: black;">
+                    <children>
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="275.0" prefHeight="49.0" prefWidth="129.0" text="Khách trả">
+                            <font>
+                                <Font name="System Bold" size="19.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="lb_receive" alignment="CENTER" layoutX="140.0" layoutY="275.0" prefHeight="49.0" prefWidth="240.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </TextField>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="154.0" prefHeight="49.0" prefWidth="97.0" text="Giảm">
+                            <font>
+                                <Font name="System Bold" size="19.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="lb_discount" alignment="CENTER" layoutX="140.0" layoutY="154.0" prefHeight="49.0" prefWidth="240.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </TextField>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="84.0" prefHeight="49.0" prefWidth="129.0" text="Tổng tiền">
+                            <font>
+                                <Font name="System Bold" size="19.0" />
+                            </font>
+                        </Label>
+                        <Line endX="250.333251953125" layoutX="129.0" layoutY="246.0" startX="-100.0" stroke="#bcb0b0" />
+                        <Label alignment="CENTER" layoutX="4.0" layoutY="345.0" prefHeight="49.0" prefWidth="105.0" text="Trả lại ">
+                            <font>
+                                <Font name="System Bold" size="19.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lb_refund" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="345.0" prefHeight="49.0" prefWidth="240.0" style="-fx-border-color: #BBBBBB; -fx-border-radius: 3PX;">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="106.0" layoutY="432.0" prefHeight="21.0" prefWidth="218.0" text="Giá trên đã bao gồm thuế GTGT">
+                            <font>
+                                <Font name="System Italic" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lb_totalRevenue" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="84.0" prefHeight="49.0" prefWidth="240.0" style="-fx-border-color: #BBBBBB; -fx-border-radius: 3PX;">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="14.0" prefHeight="49.0" prefWidth="153.0" text="Khách hàng">
+                            <font>
+                                <Font name="System Bold" size="19.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lb_customerName" alignment="CENTER" layoutX="140.0" layoutY="14.0" prefHeight="49.0" prefWidth="240.0" style="-fx-border-color: BBBBBB; -fx-border-radius: 3px;">
+                            <font>
+                                <Font name="System Bold" size="19.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children></AnchorPane>
+        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="22.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../ImageSource/search.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="btn_payment" alignment="CENTER" contentDisplay="CENTER" layoutX="595.0" layoutY="694.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="218.0" style="-fx-cursor: hand; -fx-background-color: #5784BB;" stylesheets="@CSS/homeView.css" text="     Thanh toán" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+            <padding>
+                <Insets left="30.0" />
+            </padding>
+        </Button>
+        <Button fx:id="btn_search" layoutX="19.0" layoutY="18.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="44.0" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+        <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="611.0" layoutY="705.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../ImageSource/confirm.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

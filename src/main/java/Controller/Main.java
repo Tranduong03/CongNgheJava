@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
 
@@ -16,14 +17,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/employee.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
         Scene scene;
-        scene = new Scene(fxmlLoader.load(), 900, 800);
+        scene = new Scene(fxmlLoader.load(), 800, 650);
         primaryStage.setScene(scene);
         // set title
         primaryStage.setTitle("DK Convenience Store");
         // set farvicon
-        Image icon = new Image(getClass().getResource("/ImageSource/farvicon.png").toExternalForm());
+        Image icon = new Image(Objects.requireNonNull(getClass().getResource("/ImageSource/farvicon.png")).toExternalForm());
         primaryStage.getIcons().add(icon);
         // show
         primaryStage.show();
