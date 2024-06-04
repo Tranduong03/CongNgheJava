@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="loginScene" prefHeight="650.0" prefWidth="800.0" stylesheets="@CSS/homeView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
@@ -47,10 +46,12 @@
                      </font>
                   </Button>
                </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1">
                <children>
-                  <Circle fill="#ff1f1f00" layoutX="200.0" layoutY="128.0" radius="100.0" stroke="#00000082" strokeType="INSIDE" />
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="100.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="129.0" fitWidth="147.0" layoutX="136.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ImageSource/DK.png" />
+                     </image></ImageView>
                   <TextField fx:id="txt_Account" layoutX="79.0" layoutY="273.0" prefHeight="36.0" prefWidth="270.0" />
                   <PasswordField fx:id="txt_Password" layoutX="79.0" layoutY="332.0" prefHeight="36.0" prefWidth="270.0" />
                   <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="28.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
@@ -69,6 +70,11 @@
                      </font>
                   </Button>
                   <Label fx:id="lb_AlertAccount" layoutX="73.0" layoutY="456.0" prefHeight="18.0" prefWidth="270.0" text="* Can't find your account. Please re-enter" textFill="#f40606" />
+                  <ImageView fitHeight="56.0" fitWidth="58.0" layoutX="243.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ImageSource/icons8-employee-100.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
          </children>
       </GridPane>

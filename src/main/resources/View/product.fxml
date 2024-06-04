@@ -90,23 +90,12 @@
                             <TableColumn fx:id="prod_Choose" prefWidth="276.0000305175781" text="Choose Product" />
                           </columns>
                         </TableView>
-                        <TableView fx:id="prod_ChooseToRestore" layoutX="603.0" prefHeight="170.0" prefWidth="278.0">
-                           <columns>
-                              <TableColumn fx:id="prod_Restore" prefWidth="276.0000305175781" text="Restore" />
-                           </columns>
-                        </TableView>
                         <Label layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="136.0" text="Delete">
                            <font>
                               <Font name="Yu Gothic Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="452.0" layoutY="14.0" prefHeight="31.0" prefWidth="136.0" text="Restore">
-                           <font>
-                              <Font name="Yu Gothic Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="btn_DeleteProd" layoutX="14.0" layoutY="108.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Delete item(s)" />
-                        <Button fx:id="btn_Restore" layoutX="452.0" layoutY="109.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Restore item(s)" />
+                        <Button fx:id="btn_DeleteProd" layoutX="471.0" layoutY="117.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" text="Delete item(s)" />
                      </children></AnchorPane>
             </content>
           </Tab>
