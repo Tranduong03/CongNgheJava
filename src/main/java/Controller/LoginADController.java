@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -12,6 +14,9 @@ import java.io.IOException;
 public class LoginADController {
     @FXML
     private Button btn_Switch;
+    @FXML private Button btn_ADLogin;
+    @FXML private TextField txt_Account;
+    @FXML private PasswordField txt_Password;
 
     @FXML
     private AnchorPane loginADScene;
@@ -27,4 +32,6 @@ public class LoginADController {
         }
         loginADScene.getChildren().setAll(node);
     }
+
+
 }

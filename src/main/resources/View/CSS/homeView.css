@@ -84,3 +84,26 @@
     -fx-background-radius: 35px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 1,0,0,0);
 }
+
+.tab-pane .tab {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 100px;
+}
+
+#pane_AddProd,
+#pane_DeleteProd,
+#pane_UpdateProd {
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0px 1.5px 1.5px 1.5px;
+    -fx-background-color: rgb(244, 244, 244);
+}
+
+#btn_SaveNewProd,
+#btn_SaveProd,
+#btn_DeleteProd,
+#btn_Restore{
+    -fx-background-color: lightgrey;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 1,0,0,0);
+}

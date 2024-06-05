@@ -12,7 +12,10 @@ public class SQLOperation {
             Connection con = SQLConnection.getConnection();
             Statement stmt = con.createStatement();
             stmt.executeUpdate(Query);
-            if(!msg.equals("")) Completed=Boolean.TRUE;
+            if(!msg.equals("")) {
+                Completed=Boolean.TRUE;
+                System.out.println(msg);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             Completed = Boolean.FALSE;
