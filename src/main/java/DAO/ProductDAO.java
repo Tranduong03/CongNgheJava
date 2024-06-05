@@ -75,4 +75,14 @@ public class ProductDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void delProduct(String prodName) throws SQLException {
+        SQLOperation.SetDatabase("UPDATE Product SET Status = 0 WHERE Name ='"+ prodName +"';", "Delete Product: " + prodName);
+    }
+
+    public void delProducts(String[] prodNames) throws SQLException {
+        for (String prodName : prodNames) {
+            delProduct(prodName);
+        }
+    }
 }

@@ -103,33 +103,39 @@ public class CustomerController  implements Initializable {
     }
 
     private void showCurrent(ResultSet rs) throws SQLException {
+        boolean hasData = true;
+
         for (int i = 1; i <= 8; i++) {
             String anchorPaneId = "#cus_ShowBox" + i;
             AnchorPane anchorPane = (AnchorPane) cus_ShowBox.lookup(anchorPaneId);
-            if(rs==null) continue;
 
             try {
-                if (rs.next()) {
+                if (hasData && rs != null && rs.next()) {
+                    anchorPane.setVisible(true);
+
                     Label name = (Label) anchorPane.lookup("#cus_name" + i);
                     Label gender = (Label) anchorPane.lookup("#cus_Gender" + i);
-                    Label Phone = (Label) anchorPane.lookup("#cus_Phone" + i);
+                    Label phone = (Label) anchorPane.lookup("#cus_Phone" + i);
 
                     anchorPane.setUserData(rs.getString("CustomerID"));
                     name.setText(rs.getString("Name"));
-                    gender.setText(rs.getBoolean("Gender")?"Female":"Male");
-                    Phone.setText(String.valueOf(rs.getString("Phone")));
+                    gender.setText(rs.getBoolean("Gender") ? "Female" : "Male");
+                    phone.setText(rs.getString("Phone"));
 
-                    System.out.println(anchorPane.getUserData().toString() + " " + name.getText() + " " + gender.getText() + " " + Phone.getText());
+                    System.out.println(anchorPane.getUserData().toString() + " " + name.getText() + " " + gender.getText() + " " + phone.getText());
                 } else {
-                    System.out.println("No more data available.");
-                    return;
+                    hasData = false;
+                    anchorPane.setVisible(false);
+                    System.out.println("No more data available for cus_ShowBox" + i);
                 }
             } catch (SQLException ex) {
                 throw new RuntimeException("Error while processing ResultSet: " + ex.getMessage(), ex);
             }
         }
-        if(rs!=null) rs.close();
+
+        if (rs != null) rs.close();
     }
+
 
     protected void clearCurShow(){
         for (int i = 0; i < 8; i++){

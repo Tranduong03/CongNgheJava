@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     @FXML private Button btn_Employee;
     @FXML private Button btn_Customer;
+    @FXML private Button btn_Product;
     @FXML
     public AnchorPane paneRight;
 
@@ -45,8 +46,23 @@ public class HomeController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                paneRight.getChildren().set(0, node);
+                paneRight.getChildren().setAll(node);
+            }
+        });
+
+        btn_Product.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("/View/product.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                paneRight.getChildren().setAll(node);
             }
         });
     }
+
 }

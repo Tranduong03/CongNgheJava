@@ -321,12 +321,16 @@ public class EmployeeController implements Initializable {
     }
 
     private void showCurrent(ResultSet rs) throws SQLException {
+        boolean hasData = true;
+
         for (int i = 1; i <= 8; i++) {
             String anchorPaneId = "#emp_ShowBox" + i;
             AnchorPane anchorPane = (AnchorPane) emp_ShowBox.lookup(anchorPaneId);
 
             try {
-                if (rs.next()) {
+                if (hasData && rs.next()) {
+                    anchorPane.setVisible(true);
+
                     Label name = (Label) anchorPane.lookup("#emp_name" + i);
                     Label hireDate = (Label) anchorPane.lookup("#emp_hireDate" + i);
                     Label salary = (Label) anchorPane.lookup("#emp_salary" + i);
@@ -338,15 +342,18 @@ public class EmployeeController implements Initializable {
 
                     System.out.println(anchorPane.getUserData().toString() + " " + name.getText() + " " + hireDate.getText() + " " + salary.getText());
                 } else {
-                    System.out.println("No more data available.");
-                    return;
+                    hasData = false;
+                    anchorPane.setVisible(false);
+                    System.out.println("No more data available for emp_ShowBox" + i);
                 }
             } catch (SQLException ex) {
-                throw new RuntimeException("Error while processing ResultSet: " + ex.getMessage(), ex);
+                throw new RuntimeException("Lỗi khi xử lý ResultSet: " + ex.getMessage(), ex);
             }
         }
-        if(rs!=null) rs.close();
+
+        if (rs != null) rs.close();
     }
+
 
 
 }

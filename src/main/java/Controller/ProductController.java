@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import DAO.ProductDAO;
 import DAO.SQLOperation;
 import Model.Product;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -137,6 +139,8 @@ public class ProductController implements Initializable {
                 }
             }
         });
+
+        setTab_DeleteProd();
 
     }
 
@@ -275,6 +279,7 @@ public class ProductController implements Initializable {
         TextField sellPrice = (TextField) pane.lookup("#prod_UpSellPrice");
         TextArea description = (TextArea) pane.lookup("#prod_UpDescription");
         ChoiceBox<String> category = (ChoiceBox<String>) pane.lookup("#prod_UpCategory");
+        category.getItems().clear();
         List<String> categoryList = new ArrayList<>();
         ResultSet rs = new ProductDAO().getAllCategory();
         try {
@@ -413,10 +418,39 @@ public class ProductController implements Initializable {
         Node content = tab_DeleteProd.getContent();
         AnchorPane pane = (AnchorPane) content.lookup("#pane_DeleteProd");
         Button del =(Button) pane.lookup("#btn_DeleteProd");
-        Button restore =(Button) pane.lookup("#btn_Restore");
         TableView<String> tableDel =(TableView<String>) pane.lookup("#prod_ChooseToDel");
-        TableView<String> tableRestore =(TableView<String>) pane.lookup("#prod_ChooseToRestore");
-        TableColumn<String, String> chooseToDel = (TableColumn<String, String>) tableDel.getColumns().stream();
-        TableColumn<String, String> chooseToRestore = (TableColumn<String, String>) tableRestore.getColumns().stream();
+        TableColumn<String, String> chooseToDel = (TableColumn<String, String>) tableDel.getColumns().get(0);
+
+        tableDel.setRowFactory(tv -> {
+            TableRow<String> row1 = new TableRow<>();
+            row1.setPrefHeight(25); // Set preferred height for each row
+            return row1;
+        });
+
+        chooseToDel.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
+
+        prod_TableShow.getSelectionModel().getSelectedItems().addListener((ListChangeListener<Product>) change -> {
+            tableDel.getItems().clear();
+            for (Product chooseProd : prod_TableShow.getSelectionModel().getSelectedItems()) {
+                tableDel.getItems().add(chooseProd.getName());
+            }
+        });
+
+        del.setOnAction(event -> {
+            ObservableList<String> items = tableDel.getItems();
+            String[] nameprods = new String[items.size()];
+            for (int i = 0; i < items.size(); i++) {
+                nameprods[i] = items.get(i);
+            }
+            try {
+                new ProductDAO().delProducts(nameprods);
+                prodShow();
+                tableDel.getItems().clear();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+
     }
 }

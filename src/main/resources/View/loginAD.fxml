@@ -10,10 +10,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="loginADScene" prefHeight="650.0" prefWidth="800.0" stylesheets="@CSS/homeView.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginADController">
@@ -50,53 +46,35 @@
                      </font>
                   </Button>
                </children></AnchorPane>
-            <AnchorPane fx:id="bkgr_ad" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="bkgr_ad" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="150.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../ImageSource/shop-main-icon.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView layoutX="223.0" layoutY="151.0">
-                     <image>
-                        <Image url="@../ImageSource/icons8-setting-48.png" />
-                     </image>
-                  </ImageView>
-                  <Circle fill="#1f93ff00" layoutX="200.0" layoutY="125.0" radius="50.0" strokeType="INSIDE">
-                     <stroke>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </stroke>
-                  </Circle>
-                  <TextField fx:id="btn_Account" layoutX="79.0" layoutY="273.0" prefHeight="36.0" prefWidth="270.0" />
-                  <PasswordField fx:id="btn_Password" layoutX="79.0" layoutY="333.0" prefHeight="36.0" prefWidth="270.0" />
-                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="28.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="txt_Account" layoutX="89.0" layoutY="274.0" prefHeight="36.0" prefWidth="270.0" />
+                  <PasswordField fx:id="txt_Password" layoutX="89.0" layoutY="334.0" prefHeight="36.0" prefWidth="270.0" />
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="38.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ImageSource/icons8-user-80.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="28.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="38.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ImageSource/img.icons8.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btn_ADLogin" layoutX="65.0" layoutY="396.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="270.0" text="Login With ADMIN">
+                  <Button fx:id="btn_ADLogin" layoutX="63.0" layoutY="395.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="270.0" text="Login With ADMIN">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
+                  <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="123.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ImageSource/shop-main-icon.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="228.0" layoutY="174.0">
+                     <image>
+                        <Image url="@../ImageSource/icons8-setting-48.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
