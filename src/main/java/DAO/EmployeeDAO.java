@@ -89,15 +89,12 @@ public class EmployeeDAO {
                 throw new SQLException("Query did not return any result.");
             }
         } catch (SQLException e) {
-            // Xử lý ngoại lệ, có thể hiển thị thông báo lỗi, ghi log, hoặc ném ngoại lệ khác để được xử lý ở một cấp độ cao hơn.
             throw new RuntimeException("Error while getting number of employees: " + e.getMessage(), e);
         } finally {
-            // Đảm bảo ResultSet được đóng sau khi sử dụng xong.
             if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    // Xử lý ngoại lệ khi đóng ResultSet.
                     throw new RuntimeException("Error closing ResultSet: " + e.getMessage(), e);
                 }
             }
@@ -174,6 +171,4 @@ public class EmployeeDAO {
         }
         return result;
     }
-
-
 }

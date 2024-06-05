@@ -97,7 +97,7 @@ public class CustomerDAO {
 
     public ResultSet getCustomer(String customerID) throws SQLException, Exception {
         ResultSet rs = null;
-        rs = SQLOperation.GetDatabase("SELECT CustomerID, Name, Gender, Phone, Birthdate, Address, Email, Tichdiem " +
+        rs = SQLOperation.GetDatabase("SELECT CustomerID, Name, Gender, Phone, Birthdate, Address, Email, PurchasePoint " +
                 "FROM Customer " +
                 "WHERE CustomerID = "+ customerID +";");
         return rs;
