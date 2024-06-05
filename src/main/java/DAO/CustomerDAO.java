@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerDAO {
+
     public int getNumCustomers(){
         ResultSet rs = null;
         try {
@@ -95,9 +96,9 @@ public class CustomerDAO {
         return result;
     }
 
-    public ResultSet getCustomer(String customerID) throws SQLException, Exception {
+    public ResultSet getCustomer(int customerID) throws SQLException, Exception {
         ResultSet rs = null;
-        rs = SQLOperation.GetDatabase("SELECT CustomerID, Name, Gender, Phone, Birthdate, Address, Email, Tichdiem " +
+        rs = SQLOperation.GetDatabase("SELECT CustomerID, Name, Gender, Phone, Birthdate, Address, Email, PurchasePoints " +
                 "FROM Customer " +
                 "WHERE CustomerID = "+ customerID +";");
         return rs;
@@ -124,6 +125,17 @@ public class CustomerDAO {
                             "OFFSET " + (page - 1) * 8 + " ROWS FETCH NEXT 8 ROWS ONLY;");
         }
         return result;
+    }
+
+    public String getCustomerName(int customerID) throws Exception {
+        ResultSet rs = getCustomer(customerID);
+        return rs.next() ? rs.getString("Name"): "";
+    }
+
+    public ResultSet getTop5Customer() throws SQLException, Exception {
+        ResultSet rs = null;
+        rs= SQLOperation.GetDatabase("Select Top 5 Name from Customer ORDER BY PurchasePoints DESC;");
+        return rs;
     }
 
 }

@@ -85,4 +85,16 @@ public class ProductDAO {
             delProduct(prodName);
         }
     }
+
+    public String getProductName(int productID) throws SQLException {
+        ResultSet rs = null;
+        rs= SQLOperation.GetDatabase("Select Name from Product where ProductID = "+ productID +";");
+        return rs.next()?rs.getString("Name"):"";
+    }
+
+    public int getNumProduct() throws SQLException {
+        ResultSet rs;
+        rs = SQLOperation.GetDatabase("SELECT COUNT(*) FROM Product");
+        return rs.next()?rs.getInt(1): -1;
+    }
 }

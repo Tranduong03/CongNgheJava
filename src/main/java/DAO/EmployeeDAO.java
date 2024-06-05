@@ -125,7 +125,7 @@ public class EmployeeDAO {
         return result;
     }
 
-    public ResultSet getEmployee(String employeeID) throws SQLException, Exception {
+    public ResultSet getEmployee(int employeeID) throws SQLException, Exception {
         ResultSet rs = null;
         rs = SQLOperation.GetDatabase("SELECT EmployeeID, Name, Gender, BirthDate, Phone, Email, Salary, HireDate, Account, Address " +
                     "FROM Employee " +
@@ -175,5 +175,27 @@ public class EmployeeDAO {
         return result;
     }
 
+    public String getEmployeeName(int employeeID) throws Exception {
+        ResultSet rs = getEmployee(employeeID);
+
+        return rs.next()? rs.getString("Name"): "";
+    }
+
+    public ResultSet getTop5Employee() throws SQLException, Exception {
+        ResultSet rs = null;
+        rs = SQLOperation.GetDatabase("SELECT TOP 5 \n" +
+                "    E.Name,\n" +
+                "    SUM(I.TotalMoney) AS TotalSales\n" +
+                "FROM \n" +
+                "    Employee E\n" +
+                "JOIN \n" +
+                "    Invoice I ON E.EmployeeID = I.EmployeeID\n" +
+                "GROUP BY \n" +
+                "    E.EmployeeID, E.Name\n" +
+                "ORDER BY \n" +
+                "    TotalSales DESC;\n");
+
+        return rs;
+    }
 
 }

@@ -271,7 +271,7 @@ public class DetailsEmployeeController implements Initializable {
                 PauseTransition pause = new PauseTransition(Duration.seconds(3));
                 pause.setOnFinished(e -> lbl_Complete.setVisible(false));
                 pause.play();
-                setResultSet(new EmployeeDAO().getEmployee(String.valueOf(id)));
+                setResultSet(new EmployeeDAO().getEmployee(id));
             }
         }
     }
