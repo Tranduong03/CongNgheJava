@@ -1,6 +1,10 @@
 package Model;
 
 public class Admin {
+    public Admin() {
+
+    }
+
     public String getAccount() {
         return account;
     }
@@ -19,7 +23,6 @@ public class Admin {
 
     private String account;
     private String password;
-
 
     public Admin(String account, String password) {
         this.account = account;

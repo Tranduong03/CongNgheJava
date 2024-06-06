@@ -1,4 +1,4 @@
-module com.example.project {
+module BTL_JAVA {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;

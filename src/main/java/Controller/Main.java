@@ -18,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/dashboard.fxml"));
         Scene scene;
-        scene = new Scene(fxmlLoader.load(), 1200, 800);
+        scene = new Scene(fxmlLoader.load(), 800, 650);
         primaryStage.setScene(scene);
         // set title
         primaryStage.setTitle("DK Convenience Store");

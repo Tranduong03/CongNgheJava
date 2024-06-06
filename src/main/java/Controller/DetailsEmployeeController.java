@@ -42,6 +42,7 @@ public class DetailsEmployeeController implements Initializable {
     private ResultSet rs;
     private int id;
     private Employee emp = new Employee();
+    private Employee employee;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,10 +74,12 @@ public class DetailsEmployeeController implements Initializable {
         });
     }
 
+    /*
+    * Hiển thị thông tin chi tiết của nhân viên
+    * khi click vào Employee bất kì
+    * */
     protected void setResultSet(ResultSet resultSet) {
-
         this.rs = resultSet;
-
         try {
             if (rs.next()) {
                 id = rs.getInt(1);
@@ -103,6 +106,20 @@ public class DetailsEmployeeController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void setEmployeeFromLogin(Employee employee) {
+        this.employee = employee;
+        // Cập nhật giao diện từ thông tin employee
+        txt_Name.setText(employee.getName());
+        cb_Gender.setValue(employee.getGender() ? "Female" : "Male");
+        txt_Phone.setText(employee.getPhone());
+        txt_Email.setText(employee.getEmail());
+        txt_Salary.setText(employee.getSalary()+"");
+        lb_Account.setText("Account: "+employee.getAccount());
+        dp_Birthdate.setValue(employee.getBirthDate());
+        lb_HireDate.setText(""+ employee.getHireDate());
+        txt_Address.setText(employee.getAddress());
     }
 
     public Boolean validate() {
@@ -248,6 +265,9 @@ public class DetailsEmployeeController implements Initializable {
         return true;
     }
 
+    /*
+    * xử lí sự kiện khi click nút Save ở giao diện
+    * */
     protected void onSaveClicked() throws Exception {
         if (validate()) {
             String name = txt_Name.getText();
@@ -274,12 +294,15 @@ public class DetailsEmployeeController implements Initializable {
                 setResultSet(new EmployeeDAO().getEmployee(id));
             }
         }
-    }
+    } // end btn_save
 
+    /*
+     * xử lí sự kiện khi click nút Delete ở giao diện
+     * */
     protected void onDeleteClicked() throws Exception {
         new EmployeeDAO().deleteEmployee(id);
 
         Stage stage = (Stage) btn_DeleteEmp.getScene().getWindow();
         stage.close();
-    }
+    } // end btn_delete
 }
