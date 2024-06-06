@@ -84,8 +84,8 @@
           <Tab fx:id="tab_DeleteProd" text="Delete">
             <content>
               <AnchorPane fx:id="pane_DeleteProd" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="prod_ChooseToDel" layoutX="162.0" prefHeight="170.0" prefWidth="278.0">
+                  <children>
+                     <TableView fx:id="prod_ChooseToDel" layoutX="162.0" prefHeight="170.0" prefWidth="278.0">
                           <columns>
                             <TableColumn fx:id="prod_Choose" prefWidth="276.0000305175781" text="Choose Product" />
                           </columns>
@@ -96,7 +96,8 @@
                            </font>
                         </Label>
                         <Button fx:id="btn_DeleteProd" layoutX="471.0" layoutY="117.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" text="Delete item(s)" />
-                     </children></AnchorPane>
+                     </children>
+              </AnchorPane>
             </content>
           </Tab>
             <Tab fx:id="tab_UpdateProd" text="Update">

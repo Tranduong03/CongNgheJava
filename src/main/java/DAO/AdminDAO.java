@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminDAO {
-    protected String md5Converter(String password) {
+    protected static String md5Converter(String password) {
         try{
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(password.getBytes());
@@ -25,10 +25,8 @@ public class AdminDAO {
         return "";
     }
 
-
     public void addAdminAccount(Admin admin) {
         SQLOperation.SetDatabase("insert into AdminAccount(Account, Password) values('" + admin.getAccount() + "','" + md5Converter(admin.getPassword()) + "');", "");
-
     }
 
     public static Admin checkAdminAccount(String account, String password) {
@@ -36,11 +34,15 @@ public class AdminDAO {
         try {
             ResultSet rs = SQLOperation.GetDatabase("select* from AdminAccount "
                     + "where Account='"+ account +"' "
-                    + "and Password= '"+ password + "'; ");
+                    + "and Password= '"+ AdminDAO.md5Converter(password) + "'; ");
             while (true){
-                assert rs!=null;
+                assert rs != null;
                 if(!rs.next()) break;
-                admin = new Admin(account, password);
+//                admin = new Admin(account, password);
+                admin = new Admin();
+
+                admin.setAccount(rs.getString("Account"));
+                admin.setPassword(rs.getString("Password"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

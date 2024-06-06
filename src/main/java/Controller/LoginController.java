@@ -51,7 +51,6 @@ public class LoginController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         loginScene.getChildren().setAll(node);
     }
 
@@ -60,7 +59,7 @@ public class LoginController implements Initializable {
         String acc = txt_Account.getText();
         String pass = txt_Password.getText();
         Employee employee = checkLogin(acc, pass);
-        changeScene(event,employee);
+        changeScene(event, employee);
     }
 
     @Override
