@@ -16,14 +16,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/dashboard.fxml"));
         Scene scene;
         scene = new Scene(fxmlLoader.load(), 800, 650);
         primaryStage.setScene(scene);
         // set title
         primaryStage.setTitle("DK Convenience Store");
         // set farvicon
-        Image icon = new Image(getClass().getResource("/ImageSource/farvicon.png").toExternalForm());
+        Image icon = new Image(getClass().getResource("/ImageSource/DK.png").toExternalForm());
         primaryStage.getIcons().add(icon);
         // show
         primaryStage.show();

@@ -41,6 +41,7 @@ public class ProductController implements Initializable {
     @FXML public Tab tab_AddProd;
     @FXML private Tab tab_UpdateProd;
     @FXML private Tab tab_DeleteProd;
+    @FXML private Tab tab_PushProduct;
 
     @FXML private TextField txt_Search;
     @FXML private ImageView btn_Search;
@@ -126,6 +127,11 @@ public class ProductController implements Initializable {
         prod_TableShow.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 setTab_UpdateProd();
+                try {
+                    setTab_PushProd();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -141,6 +147,53 @@ public class ProductController implements Initializable {
         });
 
         setTab_DeleteProd();
+
+
+    }
+
+    private void setTab_PushProd() throws SQLException {
+        Node content = tab_PushProduct.getContent();
+        AnchorPane pane = (AnchorPane) content.lookup("#pane_pushProduct");
+        TextField id = (TextField) pane.lookup("#prod_ID");
+        TextField Quantity = (TextField) pane.lookup("#prod_addQuantity");
+        Button push = (Button) pane.lookup("#btn_pushProd");
+
+        Product prod = prod_TableShow.getSelectionModel().getSelectedItem();
+        int prodID = new ProductDAO().getProductID(prod.getName());
+        id.setText(String.valueOf(prodID));
+
+        push.setOnAction(event -> {
+            try {
+                int IDNumber = Integer.parseInt(id.getText());
+                int quantity = Integer.parseInt(Quantity.getText());
+
+                if(IDNumber > 0 && quantity > 0){
+                    new ProductDAO().pushProduct(IDNumber, quantity);
+                }
+                else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please enter all the correctly positive number! ");
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter all the correctly positive number! ");
+                alert.showAndWait();
+                return;
+            }
+            try {
+                id.setText("");
+                Quantity.setText("");
+                txt_Search.setText("");
+                prodShow();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
     }
 

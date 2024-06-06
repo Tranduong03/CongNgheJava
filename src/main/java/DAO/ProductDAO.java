@@ -85,4 +85,42 @@ public class ProductDAO {
             delProduct(prodName);
         }
     }
+
+    public String getProductName(int productID) throws SQLException {
+        ResultSet rs = null;
+        rs= SQLOperation.GetDatabase("Select Name from Product where ProductID = "+ productID +";");
+        return rs.next()?rs.getString("Name"):"";
+    }
+
+    public int getNumProduct() throws SQLException {
+        ResultSet rs;
+        rs = SQLOperation.GetDatabase("SELECT COUNT(*) FROM Product");
+        return rs.next()?rs.getInt(1): -1;
+    }
+
+    public void pushProduct(int productID, int quantity){
+        SQLOperation.SetDatabase("UPDATE Product\n" +
+                                        "SET Quantity = Quantity + "+ quantity +
+                                        " WHERE ProductID = "+ productID +"  ;\n",
+                                    "Add completed "+ quantity +" for product: "+ productID);
+    }
+
+    public ResultSet getRevenueDetails(){
+        ResultSet rs = SQLOperation.GetDatabase("SELECT \n" +
+                "    p.Name,\n" +
+                "    COALESCE(SUM(di.Quantity), 0) AS QuantitySold,\n" +
+                "    COALESCE(SUM(di.Quantity * di.Value), 0) AS TotalValueSold\n" +
+                "FROM \n" +
+                "    Product p\n" +
+                "LEFT JOIN \n" +
+                "    DetailsInvoice di ON p.ProductID = di.ProductID\n" +
+                "GROUP BY \n" +
+                "    p.ProductID, p.Name, p.Description, p.SellPrice\n" +
+                "HAVING\n" +
+                "\tCOALESCE(SUM(di.Quantity), 0) > 0\n" +
+                "ORDER BY \n" +
+                "    TotalValueSold DESC;");
+
+        return rs;
+    }
 }

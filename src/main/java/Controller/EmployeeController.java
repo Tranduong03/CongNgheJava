@@ -264,7 +264,7 @@ public class EmployeeController implements Initializable {
                 try {
                     // Lấy ResultSet từ EmployeeDAO
                     if(!anchorPane.getUserData().equals("") && !anchorPane.getUserData().equals(null)) {
-                        ResultSet rs = new EmployeeDAO().getEmployee(anchorPane.getUserData().toString());
+                        ResultSet rs = new EmployeeDAO().getEmployee(Integer.parseInt(anchorPane.getUserData().toString()));
                         // Tạo FXMLLoader và load scene mới
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/detailsEmployee.fxml"));
                         Stage primaryStage = new Stage();

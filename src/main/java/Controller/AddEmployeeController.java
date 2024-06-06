@@ -246,6 +246,11 @@ public class AddEmployeeController implements Initializable {
                 PauseTransition pause = new PauseTransition(Duration.seconds(3));
                 pause.setOnFinished(e -> lbl_Complete.setVisible(false));
                 pause.play();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("Employee "+ name +" Added Successfully");
+                alert.showAndWait();
                 BacktoEmployee();
             }
         }

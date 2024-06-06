@@ -89,12 +89,15 @@ public class EmployeeDAO {
                 throw new SQLException("Query did not return any result.");
             }
         } catch (SQLException e) {
+            // Xử lý ngoại lệ, có thể hiển thị thông báo lỗi, ghi log, hoặc ném ngoại lệ khác để được xử lý ở một cấp độ cao hơn.
             throw new RuntimeException("Error while getting number of employees: " + e.getMessage(), e);
         } finally {
+            // Đảm bảo ResultSet được đóng sau khi sử dụng xong.
             if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException e) {
+                    // Xử lý ngoại lệ khi đóng ResultSet.
                     throw new RuntimeException("Error closing ResultSet: " + e.getMessage(), e);
                 }
             }
@@ -122,7 +125,7 @@ public class EmployeeDAO {
         return result;
     }
 
-    public ResultSet getEmployee(String employeeID) throws SQLException, Exception {
+    public ResultSet getEmployee(int employeeID) throws SQLException, Exception {
         ResultSet rs = null;
         rs = SQLOperation.GetDatabase("SELECT EmployeeID, Name, Gender, BirthDate, Phone, Email, Salary, HireDate, Account, Address " +
                     "FROM Employee " +
@@ -171,4 +174,28 @@ public class EmployeeDAO {
         }
         return result;
     }
+
+    public String getEmployeeName(int employeeID) throws Exception {
+        ResultSet rs = getEmployee(employeeID);
+
+        return rs.next()? rs.getString("Name"): "";
+    }
+
+    public ResultSet getTop5Employee() throws SQLException, Exception {
+        ResultSet rs = null;
+        rs = SQLOperation.GetDatabase("SELECT TOP 5 \n" +
+                "    E.Name,\n" +
+                "    SUM(I.TotalMoney) AS TotalSales\n" +
+                "FROM \n" +
+                "    Employee E\n" +
+                "JOIN \n" +
+                "    Invoice I ON E.EmployeeID = I.EmployeeID\n" +
+                "GROUP BY \n" +
+                "    E.EmployeeID, E.Name\n" +
+                "ORDER BY \n" +
+                "    TotalSales DESC;\n");
+
+        return rs;
+    }
+
 }

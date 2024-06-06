@@ -69,6 +69,29 @@ public class Product {
     private double sellPrice;
     private int quantity;
     private int categoryID;
+
+    public Product(String name, int quantity, double total) {
+        this.name = name;
+        this.quantity = quantity;
+        this.total = total;
+    }
+
+    private double total;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+
+    public Product(int id, int quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
+
     private String categoryName;
     private String description;
 
