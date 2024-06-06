@@ -12,8 +12,8 @@ public class SQLConnection {
         Connection conn = null;
         String url = "jdbc:sqlserver://localhost:1433;databaseName=BTL_java;trustServerCertificate=true;encrypt=true";
         String user = "sa";
-//        String password = "29112004";
-        String password = "03072004";
+        String password = "29112004";
+      //  String password = "03072004";
 
         try {
             conn = DriverManager.getConnection(url, user, password);
