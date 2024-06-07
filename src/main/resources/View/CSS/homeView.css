@@ -80,7 +80,7 @@
 }
 
 #btn_DeleteEmp{
-    -fx-background-color: #ff8080;
+    -fx-background-color: #ceaeae;
     -fx-background-radius: 35px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 1,0,0,0);
 }
