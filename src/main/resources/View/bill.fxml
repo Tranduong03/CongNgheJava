@@ -52,17 +52,17 @@
       </TableView>
       <AnchorPane fx:id="pane_DetailBill" layoutX="450.0" layoutY="81.0" prefHeight="706.0" prefWidth="439.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <Label layoutX="31.0" layoutY="176.0" prefHeight="20.0" prefWidth="86.0" text="Mã hoá đơn :">
+            <Label layoutX="31.0" layoutY="176.0" prefHeight="20.0" prefWidth="86.0" text="Bill ID Code:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="32.0" layoutY="209.0" prefHeight="20.0" prefWidth="121.0" text="Ngày lập hoá đơn :">
+            <Label layoutX="32.0" layoutY="209.0" prefHeight="20.0" prefWidth="121.0" text="Bill Date">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="31.0" layoutY="238.0" text="Nhân viên  :">
+            <Label layoutX="31.0" layoutY="238.0" text="Employee">
                <font>
                   <Font size="14.0" />
                </font>
@@ -107,7 +107,7 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <Label layoutX="32.0" layoutY="267.0" prefHeight="21.0" prefWidth="86.0" text="Khách hàng :">
+            <Label layoutX="32.0" layoutY="267.0" prefHeight="21.0" prefWidth="86.0" text="Customer">
                <font>
                   <Font size="14.0" />
                </font>
@@ -179,7 +179,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="107.0" layoutY="132.0" prefHeight="36.0" prefWidth="218.0" text="Phiếu Thanh Toán">
+            <Label layoutX="208.0" layoutY="129.0" prefHeight="36.0" prefWidth="50.0" text="Bill">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>

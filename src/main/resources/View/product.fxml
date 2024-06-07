@@ -125,11 +125,14 @@
               <content>
                 <AnchorPane fx:id="pane_pushProduct" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="36.0" layoutY="86.0" prefHeight="31.0" prefWidth="70.0" text="Quantity" />
-                        <TextField fx:id="prod_addQuantity" layoutX="171.0" layoutY="88.0" prefHeight="26.0" prefWidth="181.0" promptText="Enter Quantity here" />
-                        <Label layoutX="36.0" layoutY="42.0" prefHeight="31.0" prefWidth="70.0" text="Product ID:" />
-                        <TextField fx:id="prod_ID" layoutX="170.0" layoutY="44.0" prefHeight="26.0" prefWidth="182.0" promptText="Enter or Select from Table" />
-                        <Button fx:id="btn_pushProd" layoutX="441.0" layoutY="45.0" mnemonicParsing="false" text="Send" />
+                        <Label layoutX="33.0" layoutY="64.0" prefHeight="31.0" prefWidth="70.0" text="Quantity" />
+                        <TextField fx:id="prod_addQuantity" layoutX="168.0" layoutY="66.0" prefHeight="26.0" prefWidth="181.0" promptText="Enter Quantity here" />
+                        <Label layoutX="33.0" layoutY="20.0" prefHeight="31.0" prefWidth="70.0" text="Product ID:" />
+                        <TextField fx:id="prod_ID" layoutX="167.0" layoutY="22.0" prefHeight="26.0" prefWidth="182.0" promptText="Enter or Select from Table" />
+                        <Button fx:id="btn_pushProd" layoutX="168.0" layoutY="110.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Send">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
                      </children>
                   </AnchorPane>
               </content>

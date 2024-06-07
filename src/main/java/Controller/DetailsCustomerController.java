@@ -106,7 +106,9 @@ public class DetailsCustomerController implements Initializable {
             int gender = cb_Gender.getSelectionModel().getSelectedItem().equals("Female") ? 1 : 0;
             String address = txt_Address.getText();
 
-            Boolean complete = new SQLOperation().SetDatabase("","");
+            Boolean complete = new SQLOperation().SetDatabase("String sql = \"INSERT INTO Customer (Name, Address, Phone, Gender, Email, BirthDate) " +
+                    "VALUES ('" + name + "', '" + address + "', '" + phone + "', " + gender + ", '" + email + "', '" + birthdate + "');",
+                    "Customer details");
 
 //            if (complete) {
 //                lbl_Complete.setVisible(true);
