@@ -10,9 +10,9 @@ public class SQLConnection {
     public static Connection getConnection() {
 
         Connection conn = null;
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=BTL_Java;trustServerCertificate=true;encrypt=true";
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=database_for_dkstore;trustServerCertificate=true;encrypt=true";
         String user = "sa";
-        String password = "29112004";
+        String password = "03072004";
 
         try {
             conn = DriverManager.getConnection(url, user, password);
