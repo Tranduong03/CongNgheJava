@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +39,8 @@ public class DetailsEmployeeController implements Initializable {
     @FXML private Label lbl_Error;
     @FXML private Label lbl_Complete;
     @FXML private TextField txt_Address;
+    @FXML private ImageView img_save;
+    @FXML private ImageView img_del;
 
     private ResultSet rs;
     private int id;
@@ -120,6 +123,12 @@ public class DetailsEmployeeController implements Initializable {
         dp_Birthdate.setValue(employee.getBirthDate());
         lb_HireDate.setText(""+ employee.getHireDate());
         txt_Address.setText(employee.getAddress());
+        btn_SaveEmpInfo.setVisible(false);
+        btn_DeleteEmp.setVisible(false);
+        lbl_Error.setVisible(false);
+        lbl_Complete.setVisible(false);
+        img_save.setVisible(false);
+        img_del.setVisible(false);
     }
 
     public Boolean validate() {

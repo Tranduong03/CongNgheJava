@@ -17,6 +17,21 @@ public class BillDAO {
         return rs.next()? rs.getInt(1): 0;
     }
 
+    public int getInvoiceID(int empID, int cusID) throws SQLException {
+        ResultSet rs = null;
+        String query;
+
+        if (cusID != 0) {
+            query = "SELECT InvoiceID FROM Invoice WHERE EmployeeID = " + empID + " AND CustomerID = " + cusID + " ORDER BY CustomerID desc;";
+        } else {
+            query = "SELECT InvoiceID FROM Invoice WHERE EmployeeID = " + empID + " AND CustomerID IS NULL ORDER BY CustomerID desc;";
+        }
+
+        rs = SQLOperation.GetDatabase(query);
+        return rs.next() ? rs.getInt(1) : 0;
+    }
+
+
     public ResultSet getInvoice(int ID) throws SQLException {
         ResultSet rs= null;
         rs= SQLOperation.GetDatabase("SELECT CustomerID, EmployeeID FROM Invoice where InvoiceID = '"+ ID +"'");
@@ -65,4 +80,23 @@ public class BillDAO {
                 "    Month ASC;\n");
         return rs;
     }
+
+    public void createBill(int empID, int cusID){
+        SQLOperation.SetDatabase("INSERT INTO Invoice(EmployeeID, CustomerID) VALUES("+ empID + ", "+ cusID +" )","Bill create completed");
+    }
+
+    public void createBill(int empID){
+        SQLOperation.SetDatabase("INSERT INTO Invoice(EmployeeID, CustomerID) VALUES("+ empID + ", NULL )","Bill create completed");
+    }
+
+    public void createBillDetails(int billID, int prodID, int quantity){
+        SQLOperation.SetDatabase("INSERT INTO DetailsInvoice(InvoiceID, ProductID, Quantity)" +
+                                        " VALUES("+ billID + ","+ prodID + ","+ quantity + ");",
+                                String.format("Bill %d add prod %d x %d", billID, prodID, quantity));
+
+        SQLOperation.SetDatabase("UPDATE Product\n" +
+                "SET Quantity = Quantity - "+ quantity +"\n" +
+                "WHERE ProductID = "+ prodID +";\n","");
+    }
+
 }

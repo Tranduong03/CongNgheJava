@@ -104,6 +104,16 @@ public class CustomerDAO {
         return rs;
     }
 
+    public ResultSet getCustomer(String name) throws SQLException, Exception {
+        ResultSet rs = null;
+        rs = SQLOperation.GetDatabase("SELECT CustomerID, Name, Gender, Phone, Birthdate, Address, Email, PurchasePoints " +
+                "FROM Customer " +
+                "WHERE CustomerID = "+ name +" OR Name ='"+ name +"';");
+        return rs;
+    }
+
+
+
     public void deleteCustomer(int customerID) throws SQLException, Exception {
         SQLOperation.SetDatabase("DELETE FROM Customer WHERE CustomerID='"+ customerID +"';", "Delete Success");
     }

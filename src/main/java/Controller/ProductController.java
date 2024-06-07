@@ -205,7 +205,7 @@ public class ProductController implements Initializable {
                     rs.getString("Name"),
                     rs.getDouble("SellPrice"),
                     rs.getInt("Quantity"),
-                    new ProductDAO().getCategoryName(rs.getInt("CategoryID")),
+                    rs.getString("CategoryName"),
                     rs.getString("Description")
             );
 
@@ -444,7 +444,7 @@ public class ProductController implements Initializable {
                         rs.getString("Name"),
                         rs.getDouble("SellPrice"),
                         rs.getInt("Quantity"),
-                        new ProductDAO().getCategoryName(rs.getInt("CategoryID")),
+                        rs.getString("CategoryName"),
                         rs.getString("Description")
                 );
 

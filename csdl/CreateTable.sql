@@ -71,4 +71,4 @@ CREATE TABLE DetailsInvoice (
 	PRIMARY KEY (InvoiceID, ProductID)
 );
 ------------------------------------------------------------------------------------------------------------
-
+CREATE TABLE

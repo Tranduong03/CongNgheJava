@@ -69,6 +69,18 @@ public class Product {
     private double sellPrice;
     private int quantity;
     private int categoryID;
+    private String categoryName;
+    private String description;
+
+    public int getPurchaseQuantity() {
+        return purchaseQuantity;
+    }
+
+    public void setPurchaseQuantity(int purchaseQuantity) {
+        this.purchaseQuantity = purchaseQuantity;
+    }
+
+    private int purchaseQuantity;
 
     public Product(String name, int quantity, double total) {
         this.name = name;
@@ -92,8 +104,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    private String categoryName;
-    private String description;
+
 
 
     public Product(String name, double sellPrice, int quantity, String categoryName, String description) {
@@ -102,6 +113,7 @@ public class Product {
         this.quantity = quantity;
         this.categoryName = categoryName;
         this.description = description;
+        this.purchaseQuantity = 0;
     }
 
 

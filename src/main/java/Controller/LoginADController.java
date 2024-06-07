@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Admin;
+import Model.Employee;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -89,5 +90,27 @@ public class LoginADController implements Initializable {
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(e -> lb_AlertAccount.setVisible(false));
         pause.play();
+    }
+
+    public void changeScene(ActionEvent event){
+        Parent root = null;
+
+            try {
+                FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/View/home.fxml"));
+                root = loader.load();
+                HomeEmployeeController homeEmployeeController = loader.getController();
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Home");
+            stage.setMaximized(true);
+            stage.setFullScreen(true);
+            stage.setScene(new Scene(root,1200, 800));
+            stage.setResizable(true);
+            stage.centerOnScreen();
+            stage.show();
+
     }
 }

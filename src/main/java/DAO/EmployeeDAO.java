@@ -133,6 +133,14 @@ public class EmployeeDAO {
         return rs;
     }
 
+    public ResultSet getEmployee(String name) throws SQLException, Exception {
+        ResultSet rs = null;
+        rs = SQLOperation.GetDatabase("SELECT EmployeeID, Name, Gender, BirthDate, Phone, Email, Salary, HireDate, Account, Address " +
+                "FROM Employee " +
+                "WHERE Name = '"+ name +"'");
+        return rs;
+    }
+
     public void deleteEmployee(int employeeID) throws SQLException, Exception {
         SQLOperation.SetDatabase("DELETE FROM Employee WHERE EmployeeID='"+ employeeID +"';", "Delete Success");
     }

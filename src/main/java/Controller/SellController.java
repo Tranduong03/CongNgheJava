@@ -1,5 +1,8 @@
 package Controller;
 
+import DAO.BillDAO;
+import DAO.CustomerDAO;
+import DAO.EmployeeDAO;
 import DAO.ProductDAO;
 import Model.Product;
 import javafx.animation.PauseTransition;
@@ -13,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.util.converter.IntegerStringConverter;
@@ -50,7 +54,11 @@ public class SellController implements Initializable {
     @FXML private Label lb_Alert;
 
     private boolean searchFlag = false;
+    private String empName;
 
+    public void setEmployeeName(String employeeName) {
+        this.empName = employeeName;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -150,6 +158,17 @@ public class SellController implements Initializable {
             }
         });
 
+        btn_ProdSearch.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    prodShow();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
     }
 
     private void completeTrade() {
@@ -164,6 +183,9 @@ public class SellController implements Initializable {
                 txt_Received.setText("");
                 lb_refund.setText("");
                 return;
+            }else {
+                lb_refund.setText(String.format("%.2f",refund));
+                saveTrade();
             }
         } catch (NumberFormatException e) {
             lb_Alert.setVisible(true);
@@ -174,9 +196,43 @@ public class SellController implements Initializable {
             txt_Received.setText("");
             lb_refund.setText("");
             return;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         } finally {
 
         }
+    }
+
+    private void saveTrade() throws Exception {
+        System.out.println(empName);
+        ResultSet rsEmp = new EmployeeDAO().getEmployee(empName);
+        int empID = 0;
+        while (rsEmp.next()){
+            empID =  rsEmp.getInt("EmployeeID");
+        }
+        ResultSet rsCus = new CustomerDAO().getCustomer(txt_CusName.getText());
+
+        int cusID = 0;
+        try {
+            while (rsCus.next()){
+                cusID = rsCus.getInt("CustomerID");
+            }
+
+        } catch (NullPointerException | SQLException e) {
+            cusID = 0;
+        }
+
+        if( cusID==0){
+            new BillDAO().createBill(empID);
+        }
+        else new BillDAO().createBill(empID, cusID);
+
+        int billID = new BillDAO().getInvoiceID(empID, cusID);
+
+        for (Product product : prod_ProductChoose.getItems()) {
+            new BillDAO().createBillDetails(billID, new ProductDAO().getProductID(product.getName()),product.getPurchaseQuantity());
+        }
+
     }
 
     private double calculateTotal() {

@@ -8,17 +8,19 @@ import java.sql.SQLException;
 public class ProductDAO {
     public ResultSet getAllProducts() {
         ResultSet rs;
-        rs = SQLOperation.GetDatabase("select Name, SellPrice, Quantity, CategoryID, Description "
-                + "from Product "
-                + "where Status = 1;");
+        rs = SQLOperation.GetDatabase("SELECT Product.Name, Product.SellPrice, Product.Quantity, Category.Name AS CategoryName, Product.Description\n" +
+                "FROM Product\n" +
+                "INNER JOIN Category ON Category.CategoryID = Product.CategoryID\n" +
+                "WHERE Product.Status = 1;\n");
         return rs;
     }
 
     public ResultSet getSearchProduct(String name) {
         ResultSet rs;
-        rs = SQLOperation.GetDatabase("Select Name, SellPrice, Quantity, CategoryID, Description " +
-                                            " from Product " +
-                                            " Where Status = 1 AND Name LIKE '%"+ name +"%';");
+        rs = SQLOperation.GetDatabase("SELECT Product.Name, Product.SellPrice, Product.Quantity, Category.Name AS CategoryName, Product.Description\n" +
+                "FROM Product\n" +
+                "INNER JOIN Category ON Category.CategoryID = Product.CategoryID\n" +
+                "WHERE Product.Status = 1 AND Product.Name LIKE '%"+ name +"%';\n");
         return rs;
     }
 

@@ -34,7 +34,7 @@ public class AdminDAO {
         try {
             ResultSet rs = SQLOperation.GetDatabase("select* from AdminAccount "
                     + "where Account='"+ account +"' "
-                    + "and Password= '"+ AdminDAO.md5Converter(password) + "'; ");
+                    + "and Password= '"+ password + "'; ");
             while (true){
                 assert rs != null;
                 if(!rs.next()) break;

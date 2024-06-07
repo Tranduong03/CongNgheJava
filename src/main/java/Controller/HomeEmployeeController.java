@@ -2,8 +2,11 @@ package Controller;
 
 import Model.Employee;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -25,6 +28,9 @@ public class HomeEmployeeController {
     @FXML private Button btn_Exit;
     @FXML private Label lblClock;
     @FXML private Label lb_Name;
+    @FXML private Button btn_Dashboard;
+    @FXML private AnchorPane paneRight;
+    @FXML private Button btn_Bill;
 
     private Employee employee;
 
@@ -35,6 +41,38 @@ public class HomeEmployeeController {
         * Tạo cửa sổ hiển thị chi tiết employee
         * Hiển thị thông tin của tài khoản đăng nhập
         *  */
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/dashboard.fxml"));
+
+        Node node = null;
+        try {
+            node = loader.load();
+            paneRight.getChildren().add(0, node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        btn_Dashboard.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/dashboard.fxml"));
+                Node node = null;
+                try {
+                    node = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                paneRight.getChildren().setAll(node);
+            }
+        });
+
+        btn_Bill.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                loadSell();
+            }
+        });
         details.setOnMouseClicked(event -> {
             try {
                 // Tải detailsEmployee.fxml
@@ -114,6 +152,22 @@ public class HomeEmployeeController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void loadSell() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/sell.fxml"));
+        Node node = null;
+        try {
+            node = loader.load();
+
+            // Lấy SellController và truyền EmployeeName cho nó
+            SellController sellController = loader.getController();
+            sellController.setEmployeeName(employee.getName());
+
+            paneRight.getChildren().setAll(node);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
