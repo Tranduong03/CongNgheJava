@@ -2,8 +2,8 @@
 SELECT * FROM Employee;
 SELECT * FROM Category;
 SELECT * FROM Product;
-SELECT * FROM Invoice;
-SELECT * FROM DetailsInvoice;
+SELECT * FROM Invoice where InvoiceID = 1128;
+SELECT * FROM DetailsInvoice where InvoiceID = 1128;
 SELECT * FROM KhuyenMai;
 
 -- TABLE KHACHHANG ---------

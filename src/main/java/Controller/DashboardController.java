@@ -111,7 +111,7 @@ public class DashboardController implements Initializable {
         chart_Revenue.setTitle("Revenue by month");
 
         XYChart.Series<String, Double> series = new XYChart.Series<>();
-        series.setName("Doanh thu");
+        series.setName("Revenue");
         ResultSet rs = new BillDAO().getRevenueByMonth();
         while (rs.next()){
             String month = rs.getString("Month");

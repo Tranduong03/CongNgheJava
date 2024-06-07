@@ -32,3 +32,6 @@ INSERT INTO Customer (Name, Address, Phone, Gender, Email, Birthdate) VALUES
 ('Le Thi Thuy Hang', 'Binh Thuan', '0988818269', 0, NULL, '2007-06-04'),
 ('Nguyen Van Phong',  NULL, '0199333657', 1, NULL, '2009-08-24'),
 ('Nguyen Thi Kim Ngan',  'Dong Thap', '0990870430', 0, NULL, '2000-05-03');
+
+INSERT INTO Invoice (CustomerID, EmployeeID) VALUES (1004, 1011)
+INSERT INTO DetailsInvoice (InvoiceID, ProductID, Quantity) VALUES (1128, 54, 10);

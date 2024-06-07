@@ -101,3 +101,41 @@ BEGIN
 END;
 
 
+--- 
+CREATE TRIGGER trg_InsertDetailsInvoice
+ON DetailsInvoice
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @ProductID INT;
+    DECLARE @InvoiceID INT;
+    DECLARE @Quantity INT;
+
+    -- Get the values from the inserted row
+    SELECT @ProductID = ProductID, @InvoiceID = InvoiceID, @Quantity = Quantity
+    FROM inserted;
+
+    -- Check the current stock quantity of the product
+    IF EXISTS (
+        SELECT 1 
+        FROM Product 
+        WHERE ProductID = @ProductID AND Quantity >= @Quantity
+    )
+    BEGIN
+        -- If there is enough stock, update the product's quantity
+        UPDATE Product
+        SET Quantity = Quantity - @Quantity
+        WHERE ProductID = @ProductID;
+
+        -- Insert the details invoice
+        INSERT INTO DetailsInvoice (InvoiceID, ProductID, Quantity, Value)
+        SELECT InvoiceID, ProductID, Quantity, Value
+        FROM inserted;
+    END
+    ELSE
+    BEGIN
+        -- Handle the case where there is not enough stock
+        RAISERROR ('Not enough stock for product', 16, 1);
+        ROLLBACK TRANSACTION;
+    END
+END;
